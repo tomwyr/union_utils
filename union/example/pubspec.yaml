@@ -1,0 +1,20 @@
+name: example
+description: Example usages of the Union package.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: '>=2.19.2 <3.0.0'
+
+dependencies:
+  union:
+    git:
+      url: https://github.com/tomwyr/union.git
+      path: union
+
+dev_dependencies:
+  build_runner: ^2.3.3
+  union_generator:
+    git:
+      url: https://github.com/tomwyr/union.git
+      path: union_generator

@@ -1,11 +1,17 @@
 name: union_generator
-description: A sample command-line application.
+description: Code generator for the Union package.
 version: 1.0.0
+publish_to: none
 
 environment:
   sdk: '>=2.19.2 <3.0.0'
 
-
-dev_dependencies:
-  lints: ^2.0.0
-  test: ^1.21.0
+dependencies:
+  analyzer: ^5.6.0
+  build: ^2.3.1
+  collection: ^1.17.1
+  source_gen: ^1.2.7
+  union:
+    git:
+      url: https://github.com/tomwyr/union.git
+      path: union

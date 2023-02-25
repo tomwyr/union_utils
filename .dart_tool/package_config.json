@@ -1,0 +1,20 @@
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "lints",
+      "rootUri": "file:///Users/tomaszwyrowinski/.pub-cache/hosted/pub.dev/lints-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "union",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    }
+  ],
+  "generated": "2023-02-25T00:53:01.520432Z",
+  "generator": "pub",
+  "generatorVersion": "2.19.2"
+}

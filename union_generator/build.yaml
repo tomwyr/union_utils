@@ -1,0 +1,10 @@
+builders:
+  union:
+    target: ":union"
+    import: "package:union_generator/src/builder.dart"
+    builder_factories:
+      - unionBuilder
+    build_extensions: {".dart": [".union.g.part"]}
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]
