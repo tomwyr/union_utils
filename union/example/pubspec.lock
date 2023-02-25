@@ -388,16 +388,20 @@ packages:
   union:
     dependency: "direct main"
     description:
-      path: ".."
-      relative: true
-    source: path
+      path: union
+      ref: HEAD
+      resolved-ref: "8876e7f96058653450110ad9e73d772fb9544ac3"
+      url: "https://github.com/tomwyr/union.git"
+    source: git
     version: "1.0.0"
   union_generator:
     dependency: "direct dev"
     description:
-      path: "../../union_generator"
-      relative: true
-    source: path
+      path: union_generator
+      ref: HEAD
+      resolved-ref: "8876e7f96058653450110ad9e73d772fb9544ac3"
+      url: "https://github.com/tomwyr/union.git"
+    source: git
     version: "1.0.0"
   watcher:
     dependency: transitive
