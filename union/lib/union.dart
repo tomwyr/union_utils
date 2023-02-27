@@ -1,4 +1,4 @@
 library union;
 
-export 'src/annotations.dart' show Union, EnumUnion;
+export 'src/annotations.dart';
 export 'src/errors.dart';
