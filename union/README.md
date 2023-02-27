@@ -40,7 +40,7 @@ enum Animal {
 ```
 The annotation on an enum will generate an extension on `Animal` enum with similar utility methods:
 ```Dart
-animal?.map(
+animal.map(
   cat: () {
     // It's a cat.
   },
