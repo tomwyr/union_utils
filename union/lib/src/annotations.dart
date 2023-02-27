@@ -1,5 +1,6 @@
 import 'package:meta/meta_meta.dart';
 
+/// Base interface for union annotations.
 abstract class UnionAnnotation {
   UnionAnnotation._();
 }
