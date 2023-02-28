@@ -1,6 +1,7 @@
 name: union
 description: Utils code generation for union types.
 version: 1.0.0
+publish_to: none
 
 environment:
   sdk: '>=2.19.2 <3.0.0'
