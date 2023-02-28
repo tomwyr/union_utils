@@ -23,4 +23,22 @@ extension BirdUnion on Bird {
       unionCase: this,
     );
   }
+
+  T maybeMap<T>({
+    T Function(Eagle eagle)? eagle,
+    T Function(Flightless flightless)? flightless,
+    required T Function() orElse,
+  }) {
+    if (this is Eagle) {
+      return eagle != null ? eagle(this as Eagle) : orElse();
+    }
+    if (this is Flightless) {
+      return flightless != null ? flightless(this as Flightless) : orElse();
+    }
+
+    throw UnknownUnionCaseError(
+      unionName: 'Bird',
+      unionCase: this,
+    );
+  }
 }

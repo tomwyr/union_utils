@@ -68,3 +68,6 @@ extension on Animal {}
 
 A method that transforms union object to a different type by running one of the provided functions based on the actual type of the union.
 
+### **maybeMap**
+
+A method similar to [**map**](#map) that allows providing only selected functions. If no function was provided for the union case, the result of `orElse` function will be returned instead.

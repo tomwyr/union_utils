@@ -27,4 +27,26 @@ extension FlightlessUnion on Flightless {
       unionCase: this,
     );
   }
+
+  T maybeMap<T>({
+    T Function()? emu,
+    T Function()? chicken,
+    T Function()? kiwi,
+    required T Function() orElse,
+  }) {
+    if (this == Flightless.emu) {
+      return emu != null ? emu() : orElse();
+    }
+    if (this == Flightless.chicken) {
+      return chicken != null ? chicken() : orElse();
+    }
+    if (this == Flightless.kiwi) {
+      return kiwi != null ? kiwi() : orElse();
+    }
+
+    throw UnknownUnionCaseError(
+      unionName: 'Flightless',
+      unionCase: this,
+    );
+  }
 }

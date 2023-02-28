@@ -3,19 +3,7 @@ import 'package:collection/collection.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:union/union.dart';
 
-import 'union_type.dart';
-
-class UnionConfig {
-  UnionConfig({
-    required this.unionName,
-    required this.unionCases,
-    required this.unionType,
-  });
-
-  final String unionName;
-  final Iterable<String> unionCases;
-  final UnionType unionType;
-}
+import 'union_config.dart';
 
 abstract class UnionConfigReader {
   factory UnionConfigReader(Element element, ConstantReader annotation) {
@@ -80,6 +68,7 @@ class ClassConfigReader implements UnionConfigReader {
       unionName: unionName,
       unionCases: unionCases,
       unionType: UnionType.classUnion,
+      utilities: UnionUtilities.all,
     );
   }
 
@@ -113,6 +102,7 @@ class EnumUnionConfigReader implements UnionConfigReader {
       unionName: unionName,
       unionCases: unionCases,
       unionType: UnionType.enumUnion,
+      utilities: UnionUtilities.all,
     );
   }
 }
