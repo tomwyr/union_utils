@@ -57,7 +57,7 @@ class ClassConfigReader implements UnionConfigReader {
     final typesReader = annotation.read('types');
 
     final unionTypeElements =
-        typesReader.listValue.map((dartObject) => dartObject.toTypeValue()?.element).whereNotNull();
+        typesReader.setValue.map((dartObject) => dartObject.toTypeValue()?.element).whereNotNull();
 
     unionTypeElements.forEach(_checkIsUnionSubtype);
 

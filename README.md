@@ -7,10 +7,10 @@ A package that allows to easily generate utils code for union types. The generat
 ### **Classes**
 Annotate an existing class that you want to make a union type and declare all types that should be considered the union cases:
 ```Dart
-@Union.of([
+@Union.of({
   Cat,
   Dog,
-])
+})
 abstract class Animal {}
 
 class Cat implements Animal {}
@@ -55,10 +55,10 @@ animal.map(
 If the union annotation cannot be put on the union type directly, e.g. when the types are declared in different packages, create an extension on the type and annotate the extension instead:
 
 ```Dart
-@Union.of([
+@Union.of({
   Cat,
   Dog,
-])
+})
 extension on Animal {}
 ```
 

@@ -18,7 +18,7 @@ class Union implements UnionAnnotation {
 
   /// Types that should be considered cases of the corresponding union class.
   /// Must be subtypes of the union type.
-  final List<Type> types;
+  final Set<Type> types;
 }
 
 @Target({

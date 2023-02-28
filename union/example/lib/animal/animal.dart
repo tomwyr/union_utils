@@ -8,11 +8,11 @@ import 'reptile.dart';
 
 part 'animal.g.dart';
 
-@Union.of([
+@Union.of({
   Bird,
   Cat,
   Dog,
   Fish,
   Reptile,
-])
+})
 abstract class Animal {}
