@@ -9,8 +9,8 @@ class ClassUnionTemplate extends Template {
   @override
   String generate() {
     final utilities = <Template>[
-      if (config.utilities.map) ClassMapTemplate(config),
-      if (config.utilities.maybeMap) ClassMaybeMapTemplate(config),
+      if (config.generateMap) ClassMapTemplate(config),
+      if (config.generateMaybeMap) ClassMaybeMapTemplate(config),
     ].map((template) => template.generate());
 
     return getUnionExtension(

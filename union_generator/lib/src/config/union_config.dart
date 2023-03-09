@@ -15,6 +15,9 @@ class UnionConfig {
   final Iterable<String> unionCases;
   final UnionType unionType;
   final UnionUtilities utilities;
+
+  bool get generateMap => utilities.map && unionCases.isNotEmpty;
+  bool get generateMaybeMap => utilities.maybeMap && unionCases.isNotEmpty;
 }
 
 class UnionUtilities {
