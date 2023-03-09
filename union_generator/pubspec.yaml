@@ -1,6 +1,6 @@
 name: union_generator
 description: Code generator for the Union package.
-version: 1.0.0
+version: 1.0.1
 publish_to: none
 
 environment:
@@ -15,4 +15,4 @@ dependencies:
     git:
       url: https://github.com/tomwyr/union.git
       path: union
-      ref: v1.0.0
+      ref: v1.0.1
