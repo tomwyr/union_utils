@@ -10,7 +10,7 @@ Add package dependencies to your project:
 dependencies:
   union:
     git:
-      url: https://github.com/tomwyr/union.git
+      url: https://github.com/tomwyr/union_utils.git
       path: union
       ref: v2.0.0
 
@@ -18,7 +18,7 @@ dev_dependencies:
   build_runner:
   union_generator:
     git:
-      url: https://github.com/tomwyr/union.git
+      url: https://github.com/tomwyr/union_utils.git
       path: union_generator
       ref: v2.0.0
 ```

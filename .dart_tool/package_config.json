@@ -8,13 +8,13 @@
       "languageVersion": "2.17"
     },
     {
-      "name": "union_gen",
+      "name": "union_utils",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-03-05T15:18:16.043842Z",
-  "generator": "melos",
-  "generatorVersion": "2.9.0"
+  "generated": "2023-03-20T19:14:23.806055Z",
+  "generator": "pub",
+  "generatorVersion": "2.19.4"
 }
