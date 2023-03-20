@@ -12,7 +12,7 @@
                 "build",
                 "--delete-conflicting-outputs",
             ],
-            "cwd": "union/example",
+            "cwd": "union_example",
             "program": ".dart_tool/build/entrypoint/build.dart",
         },
     ]

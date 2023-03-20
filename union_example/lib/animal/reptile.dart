@@ -4,7 +4,7 @@ import 'animal.dart';
 
 part 'reptile.g.dart';
 
-@EnumUnion()
+@Union.ofEnum()
 enum Reptile implements Animal {
   snake,
   turtle,

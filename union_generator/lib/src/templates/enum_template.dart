@@ -1,3 +1,4 @@
+import '../config/union_case_config.dart';
 import '../config/union_config.dart';
 import 'template.dart';
 
@@ -27,9 +28,7 @@ class EnumMapTemplate extends Template {
 
   String generate() {
     final mapParams = config.unionCases.map(getMapParam).join();
-
-    final mapCalls =
-        config.unionCases.map((unionCase) => getMapCall(config.unionName, unionCase)).join();
+    final mapCalls = config.unionCases.map(getMapCall).join();
 
     return getUnionMap(
       config: config,
@@ -38,15 +37,24 @@ class EnumMapTemplate extends Template {
     );
   }
 
-  String getMapParam(String paramName) => '''
+  String getMapParam(UnionCaseConfig config) {
+    final paramName = config.paramName;
+
+    return '''
     required T Function() $paramName,
 ''';
+  }
 
-  String getMapCall(String enumName, String enumValue) => '''
-    if (this == $enumName.$enumValue) {
-      return $enumValue();
+  String getMapCall(UnionCaseConfig config) {
+    final caseValue = config.caseValue;
+    final paramName = config.paramName;
+
+    return '''
+    if (this == $caseValue) {
+      return $paramName();
     }
 ''';
+  }
 }
 
 class EnumMaybeMapTemplate extends Template {
@@ -55,13 +63,8 @@ class EnumMaybeMapTemplate extends Template {
   final UnionConfig config;
 
   String generate() {
-    final mapParams = [
-      ...config.unionCases.map(getMapperParam),
-      getOrElseParam(),
-    ].join();
-
-    final mapCalls =
-        config.unionCases.map((unionCase) => getMapCall(config.unionName, unionCase)).join();
+    final mapParams = config.unionCases.map(getMapperParam).followedBy([getOrElseParam()]).join();
+    final mapCalls = config.unionCases.map(getMapCall).join();
 
     return getUnionMaybeMap(
       config: config,
@@ -70,17 +73,26 @@ class EnumMaybeMapTemplate extends Template {
     );
   }
 
-  String getMapperParam(String paramName) => '''
+  String getMapperParam(UnionCaseConfig config) {
+    final paramName = config.paramName;
+
+    return '''
     T Function()? $paramName,
 ''';
+  }
 
   String getOrElseParam() => '''
     required T Function() orElse,
 ''';
 
-  String getMapCall(String enumName, String enumValue) => '''
-    if (this == $enumName.$enumValue) {
-      return $enumValue != null ? $enumValue() : orElse();
+  String getMapCall(UnionCaseConfig config) {
+    final caseValue = config.caseValue;
+    final paramName = config.paramName;
+
+    return '''
+    if (this == $caseValue) {
+      return $paramName != null ? $paramName() : orElse();
     }
 ''';
+  }
 }

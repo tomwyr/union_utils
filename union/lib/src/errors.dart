@@ -16,21 +16,3 @@ class UnknownUnionCaseError extends Error {
   @override
   String toString() => '$unionCase is not a valid case for $unionName union.';
 }
-
-/// An error which can be thrown by the generator when a type that is declared
-/// as one of the union's cases is not its subtype.
-class NotUnionSubtypeError extends Error {
-  NotUnionSubtypeError({
-    required this.unionName,
-    required this.unionCaseName,
-  });
-
-  /// Name of the union that received the invalid object.
-  final String unionName;
-
-  /// Name of the type that was declared as a subtype of the union.
-  final String unionCaseName;
-
-  @override
-  String toString() => '$unionCaseName is not a subtype of $unionName union.';
-}

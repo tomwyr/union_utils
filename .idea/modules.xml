@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/union/melos_union.iml" filepath="$PROJECT_DIR$/union/melos_union.iml" />
+      <module fileurl="file://$PROJECT_DIR$/union_example/melos_union_example.iml" filepath="$PROJECT_DIR$/union_example/melos_union_example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/./melos_union_gen.iml" filepath="$PROJECT_DIR$/./melos_union_gen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/union_generator/melos_union_generator.iml" filepath="$PROJECT_DIR$/union_generator/melos_union_generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/melos_union_gen.iml" filepath="$PROJECT_DIR$/melos_union_gen.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,9 @@
+name: union_utils
+
+packages:
+ - .
+ - union*
+
+scripts:
+  pub:get:
+    exec: dart pub get

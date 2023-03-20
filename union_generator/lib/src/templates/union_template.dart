@@ -1,4 +1,5 @@
 import '../config/union_config.dart';
+import '../config/union_type.dart';
 import 'class_template.dart';
 import 'enum_template.dart';
 import 'template.dart';

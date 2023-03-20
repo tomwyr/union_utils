@@ -8,5 +8,6 @@
         "**/Thumbs.db": true,
         "**/*.*.dart": false
     },
-    "explorerExclude.backup": {}
+    "explorerExclude.backup": {},
+    "dart.runPubGetOnPubspecChanges": "never"
 }

@@ -4,5 +4,5 @@ import 'flightless.dart';
 
 part 'flightless_union.g.dart';
 
-@EnumUnion()
+@Union.ofEnum()
 extension on Flightless {}

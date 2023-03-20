@@ -4,6 +4,7 @@ import 'bird.dart';
 import 'cat.dart';
 import 'dog.dart';
 import 'fish.dart';
+import 'horse.dart';
 import 'reptile.dart';
 
 part 'animal.g.dart';
@@ -14,5 +15,6 @@ part 'animal.g.dart';
   Dog,
   Fish,
   Reptile,
+  Horse,
 })
 abstract class Animal {}

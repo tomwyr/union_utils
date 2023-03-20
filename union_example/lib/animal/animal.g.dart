@@ -13,6 +13,7 @@ extension AnimalUnion on Animal {
     required T Function(Dog dog) dog,
     required T Function(Fish fish) fish,
     required T Function(Reptile reptile) reptile,
+    required T Function(Horse horse) horse,
   }) {
     if (this is Bird) {
       return bird(this as Bird);
@@ -29,6 +30,9 @@ extension AnimalUnion on Animal {
     if (this is Reptile) {
       return reptile(this as Reptile);
     }
+    if (this is Horse) {
+      return horse(this as Horse);
+    }
 
     throw UnknownUnionCaseError(
       unionName: 'Animal',
@@ -42,6 +46,7 @@ extension AnimalUnion on Animal {
     T Function(Dog dog)? dog,
     T Function(Fish fish)? fish,
     T Function(Reptile reptile)? reptile,
+    T Function(Horse horse)? horse,
     required T Function() orElse,
   }) {
     if (this is Bird) {
@@ -58,6 +63,9 @@ extension AnimalUnion on Animal {
     }
     if (this is Reptile) {
       return reptile != null ? reptile(this as Reptile) : orElse();
+    }
+    if (this is Horse) {
+      return horse != null ? horse(this as Horse) : orElse();
     }
 
     throw UnknownUnionCaseError(

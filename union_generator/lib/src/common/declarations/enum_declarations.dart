@@ -1,0 +1,26 @@
+import 'package:analyzer/dart/constant/value.dart';
+import 'package:analyzer/dart/element/element.dart';
+
+import 'union_declaration.dart';
+
+class EnumUnionDeclaration extends UnionDeclaration<EnumElement> {
+  const EnumUnionDeclaration(super.target, this.values);
+
+  final Set<DartObject> values;
+}
+
+class EnumCasesUnionDeclaration extends UnionDeclaration<EnumElement> {
+  const EnumCasesUnionDeclaration(super.target, this.cases);
+
+  final Set<EnumCaseDeclaration> cases;
+}
+
+class EnumCaseDeclaration {
+  EnumCaseDeclaration({
+    required this.value,
+    required this.name,
+  });
+
+  final DartObject value;
+  final String? name;
+}
