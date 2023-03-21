@@ -1,6 +1,10 @@
+## 2.1.0
+
+- Add support for positional parameters in utilities.
+
 ## 2.0.0
 
-- Add configurable union cases
+- Add configurable union cases.
 
 ## 1.0.1
 

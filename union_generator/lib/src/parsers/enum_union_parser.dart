@@ -13,9 +13,10 @@ class EnumUnionParser
   @override
   EnumUnionDeclaration parse(Element element, ConstantReader annotation) {
     final targetElement = getTargetElement(element, annotation);
+    final paramsType = getParamsType(annotation);
     final values = _getEnumValues(targetElement, annotation);
 
-    return EnumUnionDeclaration(targetElement, values);
+    return EnumUnionDeclaration(targetElement, paramsType, values);
   }
 
   Set<DartObject> _getEnumValues(EnumElement targetElement, ConstantReader annotation) {

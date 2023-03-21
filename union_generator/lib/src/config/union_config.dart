@@ -1,3 +1,5 @@
+import 'package:union/union.dart';
+
 import '../common/declarations/union_declaration.dart';
 import 'factories/union_config_factory.dart';
 import 'union_case_config.dart';
@@ -10,6 +12,7 @@ class UnionConfig {
     required this.unionType,
     required this.unionCases,
     required this.utilities,
+    required this.paramsType,
   });
 
   factory UnionConfig.create(UnionDeclaration declaration) =>
@@ -19,6 +22,7 @@ class UnionConfig {
   final UnionType unionType;
   final Iterable<UnionCaseConfig> unionCases;
   final UnionUtilities utilities;
+  final UnionParamsType paramsType;
 
   bool get generateMap => utilities.map && unionCases.isNotEmpty;
   bool get generateMaybeMap => utilities.maybeMap && unionCases.isNotEmpty;

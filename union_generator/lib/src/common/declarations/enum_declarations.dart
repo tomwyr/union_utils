@@ -4,13 +4,21 @@ import 'package:analyzer/dart/element/element.dart';
 import 'union_declaration.dart';
 
 class EnumUnionDeclaration extends UnionDeclaration<EnumElement> {
-  const EnumUnionDeclaration(super.target, this.values);
+  const EnumUnionDeclaration(
+    super.target,
+    super.paramsType,
+    this.values,
+  );
 
   final Set<DartObject> values;
 }
 
 class EnumCasesUnionDeclaration extends UnionDeclaration<EnumElement> {
-  const EnumCasesUnionDeclaration(super.target, this.cases);
+  const EnumCasesUnionDeclaration(
+    super.target,
+    super.paramsType,
+    this.cases,
+  );
 
   final Set<EnumCaseDeclaration> cases;
 }

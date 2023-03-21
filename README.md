@@ -12,7 +12,7 @@ dependencies:
     git:
       url: https://github.com/tomwyr/union_utils.git
       path: union
-      ref: v2.0.0
+      ref: v2.1.0
 
 dev_dependencies:
   build_runner:
@@ -20,7 +20,7 @@ dev_dependencies:
     git:
       url: https://github.com/tomwyr/union_utils.git
       path: union_generator
-      ref: v2.0.0
+      ref: v2.1.0
 ```
 
 Get the dependencies:
@@ -134,6 +134,34 @@ enum Animal {
   dog,
 }
 ```
+
+### **Common**
+
+There are configuration options that can be defined on any of the union types:
+
+- **paramsType** - defines the type of parameters used by the generated utilities for annotated unions (defaults to `UnionParamsType.named`):
+
+  ```Dart
+  @Union.of(
+    {
+      Cat,
+      Dog,
+    },
+    paramsType: UnionParamsType.positional,
+  )
+  abstract class Animal {}
+  ```
+  The annotation will generate all union utilities with positional parameters:
+  ```Dart
+  animal.map(
+    (cat) {
+      // It's a cat.
+    },
+    (dog) {
+      // Definitely a dog.
+    },
+  );
+  ```
 
 ## Annotating external types
 

@@ -25,6 +25,7 @@ class ClassUnionConfigFactory {
       unionType: UnionType.classUnion,
       unionCases: unionCases,
       utilities: utilities,
+      paramsType: declaration.paramsType,
     );
   }
 
@@ -48,6 +49,7 @@ class ClassUnionConfigFactory {
       unionType: UnionType.classUnion,
       unionCases: unionCases,
       utilities: utilities,
+      paramsType: declaration.paramsType,
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:collection/collection.dart';
 import 'package:source_gen/source_gen.dart';
+import 'package:union/union.dart';
 
 import '../common/declarations/union_declaration.dart';
 import '../common/errors.dart';
@@ -39,6 +40,11 @@ mixin UnionParserMixin<T extends Element> {
 
       uniqueNames.add(name);
     }
+  }
+
+  UnionParamsType getParamsType(ConstantReader annotation) {
+    final index = annotation.read('paramsType').objectValue.getField('index')!.toIntValue()!;
+    return UnionParamsType.values[index];
   }
 }
 

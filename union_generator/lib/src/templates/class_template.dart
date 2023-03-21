@@ -1,3 +1,5 @@
+import 'package:union/union.dart';
+
 import '../config/union_case_config.dart';
 import '../config/union_config.dart';
 import 'template.dart';
@@ -37,18 +39,26 @@ class ClassMapTemplate extends Template {
     );
   }
 
-  String getMapParam(UnionCaseConfig config) {
-    final caseValue = config.caseValue;
-    final paramName = config.paramName;
+  String getMapParam(UnionCaseConfig caseConfig) {
+    final caseValue = caseConfig.caseValue;
+    final paramName = caseConfig.paramName;
 
-    return '''
+    switch (config.paramsType) {
+      case UnionParamsType.named:
+        return '''
     required T Function($caseValue $paramName) $paramName,
 ''';
+
+      case UnionParamsType.positional:
+        return '''
+    T Function($caseValue $paramName) $paramName,
+''';
+    }
   }
 
-  String getMapCall(UnionCaseConfig config) {
-    final caseValue = config.caseValue;
-    final paramName = config.paramName;
+  String getMapCall(UnionCaseConfig caseConfig) {
+    final caseValue = caseConfig.caseValue;
+    final paramName = caseConfig.paramName;
 
     return '''
     if (this is $caseValue) {
@@ -74,22 +84,32 @@ class ClassMaybeMapTemplate extends Template {
     );
   }
 
-  String getMapParam(UnionCaseConfig config) {
-    final caseValue = config.caseValue;
-    final paramName = config.paramName;
+  String getMapParam(UnionCaseConfig caseConfig) {
+    final caseValue = caseConfig.caseValue;
+    final paramName = caseConfig.paramName;
 
     return '''
     T Function($caseValue $paramName)? $paramName,
 ''';
   }
 
-  String getOrElseParam() => '''
+  String getOrElseParam() {
+    switch (config.paramsType) {
+      case UnionParamsType.named:
+        return '''
     required T Function() orElse,
 ''';
 
-  String getMapCall(UnionCaseConfig config) {
-    final caseValue = config.caseValue;
-    final paramName = config.paramName;
+      case UnionParamsType.positional:
+        return '''
+    T Function() orElse,
+''';
+    }
+  }
+
+  String getMapCall(UnionCaseConfig caseConfig) {
+    final caseValue = caseConfig.caseValue;
+    final paramName = caseConfig.paramName;
 
     return '''
     if (this is $caseValue) {

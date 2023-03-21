@@ -1,3 +1,5 @@
+import 'package:union/union.dart';
+
 import '../config/union_config.dart';
 
 mixin TemplateUtils {
@@ -23,7 +25,9 @@ $body
   }) {
     final unknownCaseError = _getUnknownCaseError(config);
 
-    return '''
+    switch (config.paramsType) {
+      case UnionParamsType.named:
+        return '''
   T map<T>({
 $mapParams
   }) {
@@ -31,6 +35,17 @@ $mapCalls
 $unknownCaseError
   }
 ''';
+
+      case UnionParamsType.positional:
+        return '''
+  T map<T>(
+$mapParams
+  ) {
+$mapCalls
+$unknownCaseError
+  }
+''';
+    }
   }
 
   String getUnionMaybeMap({
@@ -40,7 +55,9 @@ $unknownCaseError
   }) {
     final unknownCaseError = _getUnknownCaseError(config);
 
-    return '''
+    switch (config.paramsType) {
+      case UnionParamsType.named:
+        return '''
   T maybeMap<T>({
 $mapParams
   }) {
@@ -48,6 +65,17 @@ $mapCalls
 $unknownCaseError
   }
 ''';
+
+      case UnionParamsType.positional:
+        return '''
+  T maybeMap<T>(
+$mapParams
+  ) {
+$mapCalls
+$unknownCaseError
+  }
+''';
+    }
   }
 
   String _getUnknownCaseError(UnionConfig config) => '''

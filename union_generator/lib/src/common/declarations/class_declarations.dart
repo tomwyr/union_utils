@@ -4,13 +4,21 @@ import 'package:analyzer/dart/element/type.dart';
 import 'union_declaration.dart';
 
 class ClassTypesUnionDeclaration extends UnionDeclaration<ClassElement> {
-  const ClassTypesUnionDeclaration(super.target, this.types);
+  const ClassTypesUnionDeclaration(
+    super.target,
+    super.paramsType,
+    this.types,
+  );
 
   final Set<DartType> types;
 }
 
 class ClassTypeCasesUnionDeclaration extends UnionDeclaration<ClassElement> {
-  const ClassTypeCasesUnionDeclaration(super.target, this.cases);
+  const ClassTypeCasesUnionDeclaration(
+    super.target,
+    super.paramsType,
+    this.cases,
+  );
 
   final Set<TypeCaseDeclaration> cases;
 }

@@ -1,3 +1,5 @@
+import 'package:union/union.dart';
+
 import '../config/union_case_config.dart';
 import '../config/union_config.dart';
 import 'template.dart';
@@ -37,17 +39,25 @@ class EnumMapTemplate extends Template {
     );
   }
 
-  String getMapParam(UnionCaseConfig config) {
-    final paramName = config.paramName;
+  String getMapParam(UnionCaseConfig caseConfig) {
+    final paramName = caseConfig.paramName;
 
-    return '''
+    switch (config.paramsType) {
+      case UnionParamsType.named:
+        return '''
     required T Function() $paramName,
 ''';
+
+      case UnionParamsType.positional:
+        return '''
+    T Function() $paramName,
+''';
+    }
   }
 
-  String getMapCall(UnionCaseConfig config) {
-    final caseValue = config.caseValue;
-    final paramName = config.paramName;
+  String getMapCall(UnionCaseConfig caseConfig) {
+    final caseValue = caseConfig.caseValue;
+    final paramName = caseConfig.paramName;
 
     return '''
     if (this == $caseValue) {
@@ -73,21 +83,31 @@ class EnumMaybeMapTemplate extends Template {
     );
   }
 
-  String getMapperParam(UnionCaseConfig config) {
-    final paramName = config.paramName;
+  String getMapperParam(UnionCaseConfig caseConfig) {
+    final paramName = caseConfig.paramName;
 
     return '''
     T Function()? $paramName,
 ''';
   }
 
-  String getOrElseParam() => '''
+  String getOrElseParam() {
+    switch (config.paramsType) {
+      case UnionParamsType.named:
+        return '''
     required T Function() orElse,
 ''';
 
-  String getMapCall(UnionCaseConfig config) {
-    final caseValue = config.caseValue;
-    final paramName = config.paramName;
+      case UnionParamsType.positional:
+        return '''
+    T Function() orElse,
+''';
+    }
+  }
+
+  String getMapCall(UnionCaseConfig caseConfig) {
+    final caseValue = caseConfig.caseValue;
+    final paramName = caseConfig.paramName;
 
     return '''
     if (this == $caseValue) {

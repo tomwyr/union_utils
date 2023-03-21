@@ -26,6 +26,7 @@ class EnumUnionConfigFactory {
       unionType: UnionType.enumUnion,
       unionCases: unionCases,
       utilities: utilities,
+      paramsType: declaration.paramsType,
     );
   }
 
@@ -55,6 +56,7 @@ class EnumUnionConfigFactory {
       unionType: UnionType.enumUnion,
       unionCases: unionCases,
       utilities: utilities,
+      paramsType: declaration.paramsType,
     );
   }
 }
