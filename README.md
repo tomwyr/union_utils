@@ -12,7 +12,7 @@ dependencies:
     git:
       url: https://github.com/tomwyr/union_utils.git
       path: union
-      ref: v2.1.0
+      ref: v2.2.0
 
 dev_dependencies:
   build_runner:
@@ -20,7 +20,7 @@ dev_dependencies:
     git:
       url: https://github.com/tomwyr/union_utils.git
       path: union_generator
-      ref: v2.1.0
+      ref: v2.2.0
 ```
 
 Get the dependencies:
@@ -151,7 +151,9 @@ There are configuration options that can be defined on any of the union types:
   )
   abstract class Animal {}
   ```
+
   The annotation will generate all union utilities with positional parameters:
+
   ```Dart
   animal.map(
     (cat) {
@@ -177,7 +179,7 @@ There are configuration options that can be defined on any of the union types:
   )
   abstract class Animal {}
   ```
-  The annotation will generate only a `map` method and `as*Type*` getters. 
+  The annotation will generate only a `map` method and `as*Type*` getters.
 
 ## Annotating external types
 
@@ -197,6 +199,18 @@ extension on Animal {}
 
 A method that transforms union object to a different type by running one of the provided functions based on the actual type of the union.
 
+### **mapOrNull**
+
+A method similar to [**map**](#map) that allows providing only selected functions. If no function was provided for the union case, a `null` values will be returned instead.
+
 ### **maybeMap**
 
 A method similar to [**map**](#map) that allows providing only selected functions. If no function was provided for the union case, the result of `orElse` function will be returned instead.
+
+### **as\*Type\***
+
+A method that casts union object to a specific type. If the actual type is different than the requested one, a runtime error will be thrown instead.
+
+### **as\*Type\*OrNull**
+
+A method similar to [**as\*Type\***](#asType) that returns a `null` value, if the actual union type is different than the requested one.

@@ -1,6 +1,6 @@
 name: union
 description: Annotations and public types for the union_utils package.
-version: 2.1.0
+version: 2.2.0
 publish_to: none
 
 environment:
