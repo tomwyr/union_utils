@@ -24,7 +24,7 @@ extension FlightlessUnion on Flightless {
 
     throw UnknownUnionCaseError(
       unionName: 'Flightless',
-      unionCase: this,
+      unionCase: runtimeType,
     );
   }
 
@@ -45,7 +45,7 @@ extension FlightlessUnion on Flightless {
 
     throw UnknownUnionCaseError(
       unionName: 'Flightless',
-      unionCase: this,
+      unionCase: runtimeType,
     );
   }
 
@@ -67,7 +67,7 @@ extension FlightlessUnion on Flightless {
 
     throw UnknownUnionCaseError(
       unionName: 'Flightless',
-      unionCase: this,
+      unionCase: runtimeType,
     );
   }
 }

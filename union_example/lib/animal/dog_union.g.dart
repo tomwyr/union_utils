@@ -7,15 +7,23 @@ part of 'dog_union.dart';
 // **************************************************************************
 
 extension DogUnion on Dog {
-  Beagle get asBeagle => this as Beagle;
-  GoldenRetriever get asGoldenRetriever => this as GoldenRetriever;
-  BorderCollie get asBorderCollie => this as BorderCollie;
+  Beagle get asBeagle => this is Beagle ? this as Beagle : throw _getInvalidCastError(Beagle);
+  GoldenRetriever get asGoldenRetriever => this is GoldenRetriever
+      ? this as GoldenRetriever
+      : throw _getInvalidCastError(GoldenRetriever);
+  BorderCollie get asBorderCollie =>
+      this is BorderCollie ? this as BorderCollie : throw _getInvalidCastError(BorderCollie);
+
+  InvalidUnionCastError _getInvalidCastError(Type expectedCase) => InvalidUnionCastError(
+        unionName: 'Dog',
+        expectedCase: expectedCase,
+        actualCase: runtimeType,
+      );
 
   Beagle? get asBeagleOrNull => this is Beagle ? this as Beagle : null;
   GoldenRetriever? get asGoldenRetrieverOrNull =>
       this is GoldenRetriever ? this as GoldenRetriever : null;
-  BorderCollie? get asBorderCollieOrNull =>
-      this is BorderCollie ? this as BorderCollie : null;
+  BorderCollie? get asBorderCollieOrNull => this is BorderCollie ? this as BorderCollie : null;
 
   T map<T>({
     required T Function(Beagle beagle) beagle,
@@ -34,7 +42,7 @@ extension DogUnion on Dog {
 
     throw UnknownUnionCaseError(
       unionName: 'Dog',
-      unionCase: this,
+      unionCase: runtimeType,
     );
   }
 
@@ -55,7 +63,7 @@ extension DogUnion on Dog {
 
     throw UnknownUnionCaseError(
       unionName: 'Dog',
-      unionCase: this,
+      unionCase: runtimeType,
     );
   }
 
@@ -69,19 +77,15 @@ extension DogUnion on Dog {
       return beagle != null ? beagle(this as Beagle) : orElse();
     }
     if (this is GoldenRetriever) {
-      return goldenRetriever != null
-          ? goldenRetriever(this as GoldenRetriever)
-          : orElse();
+      return goldenRetriever != null ? goldenRetriever(this as GoldenRetriever) : orElse();
     }
     if (this is BorderCollie) {
-      return borderCollie != null
-          ? borderCollie(this as BorderCollie)
-          : orElse();
+      return borderCollie != null ? borderCollie(this as BorderCollie) : orElse();
     }
 
     throw UnknownUnionCaseError(
       unionName: 'Dog',
-      unionCase: this,
+      unionCase: runtimeType,
     );
   }
 }

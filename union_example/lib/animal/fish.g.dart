@@ -7,9 +7,15 @@ part of 'fish.dart';
 // **************************************************************************
 
 extension FishUnion on Fish {
-  Shark get asJaws => this as Shark;
-  Goldfish get asNemo => this as Goldfish;
-  Piranha get asPiranha => this as Piranha;
+  Shark get asJaws => this is Shark ? this as Shark : throw _getInvalidCastError(Shark);
+  Goldfish get asNemo => this is Goldfish ? this as Goldfish : throw _getInvalidCastError(Goldfish);
+  Piranha get asPiranha => this is Piranha ? this as Piranha : throw _getInvalidCastError(Piranha);
+
+  InvalidUnionCastError _getInvalidCastError(Type expectedCase) => InvalidUnionCastError(
+        unionName: 'Fish',
+        expectedCase: expectedCase,
+        actualCase: runtimeType,
+      );
 
   Shark? get asJawsOrNull => this is Shark ? this as Shark : null;
   Goldfish? get asNemoOrNull => this is Goldfish ? this as Goldfish : null;
@@ -32,7 +38,7 @@ extension FishUnion on Fish {
 
     throw UnknownUnionCaseError(
       unionName: 'Fish',
-      unionCase: this,
+      unionCase: runtimeType,
     );
   }
 
@@ -53,7 +59,7 @@ extension FishUnion on Fish {
 
     throw UnknownUnionCaseError(
       unionName: 'Fish',
-      unionCase: this,
+      unionCase: runtimeType,
     );
   }
 
@@ -75,7 +81,7 @@ extension FishUnion on Fish {
 
     throw UnknownUnionCaseError(
       unionName: 'Fish',
-      unionCase: this,
+      unionCase: runtimeType,
     );
   }
 }

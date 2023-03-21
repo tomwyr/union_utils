@@ -111,7 +111,7 @@ $unknownCaseError
   String _getUnknownCaseError(UnionConfig config) => '''
     throw UnknownUnionCaseError(
       unionName: '${config.unionName}',
-      unionCase: this,
+      unionCase: runtimeType,
     );
 ''';
 }

@@ -24,7 +24,7 @@ extension HorseUnion on Horse {
 
     throw UnknownUnionCaseError(
       unionName: 'Horse',
-      unionCase: this,
+      unionCase: runtimeType,
     );
   }
 
@@ -45,7 +45,7 @@ extension HorseUnion on Horse {
 
     throw UnknownUnionCaseError(
       unionName: 'Horse',
-      unionCase: this,
+      unionCase: runtimeType,
     );
   }
 
@@ -67,7 +67,7 @@ extension HorseUnion on Horse {
 
     throw UnknownUnionCaseError(
       unionName: 'Horse',
-      unionCase: this,
+      unionCase: runtimeType,
     );
   }
 }

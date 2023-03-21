@@ -24,7 +24,7 @@ extension ReptileUnion on Reptile {
 
     throw UnknownUnionCaseError(
       unionName: 'Reptile',
-      unionCase: this,
+      unionCase: runtimeType,
     );
   }
 
@@ -45,7 +45,7 @@ extension ReptileUnion on Reptile {
 
     throw UnknownUnionCaseError(
       unionName: 'Reptile',
-      unionCase: this,
+      unionCase: runtimeType,
     );
   }
 
@@ -67,7 +67,7 @@ extension ReptileUnion on Reptile {
 
     throw UnknownUnionCaseError(
       unionName: 'Reptile',
-      unionCase: this,
+      unionCase: runtimeType,
     );
   }
 }
