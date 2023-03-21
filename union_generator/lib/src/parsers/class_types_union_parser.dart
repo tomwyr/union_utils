@@ -20,9 +20,10 @@ class ClassTypesUnionParser
   ClassTypesUnionDeclaration _createDeclaration(Element element, ConstantReader annotation) {
     final targetElement = getTargetElement(element, annotation);
     final paramsType = getParamsType(annotation);
+    final utilities = getUtilities(annotation);
     final types =
         annotation.read('types').setValue.map((dartObject) => dartObject.toTypeValue()!).toSet();
 
-    return ClassTypesUnionDeclaration(targetElement, paramsType, types);
+    return ClassTypesUnionDeclaration(targetElement, paramsType, utilities, types);
   }
 }

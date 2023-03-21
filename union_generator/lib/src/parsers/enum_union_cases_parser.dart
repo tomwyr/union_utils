@@ -29,9 +29,10 @@ class EnumCasesUnionParser
   EnumCasesUnionDeclaration _createDeclaration(Element element, ConstantReader annotation) {
     final targetElement = getTargetElement(element, annotation);
     final paramsType = getParamsType(annotation);
+    final utilities = getUtilities(annotation);
     final cases = _getEnumCases(targetElement, annotation);
 
-    return EnumCasesUnionDeclaration(targetElement, paramsType, cases);
+    return EnumCasesUnionDeclaration(targetElement, paramsType, utilities, cases);
   }
 
   Set<EnumCaseDeclaration> _getEnumCases(EnumElement targetElement, ConstantReader annotation) {

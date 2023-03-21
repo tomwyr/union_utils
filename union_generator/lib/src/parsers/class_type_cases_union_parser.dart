@@ -29,9 +29,10 @@ class ClassTypeCasesUnionParser
   ClassTypeCasesUnionDeclaration _createDeclaration(Element element, ConstantReader annotation) {
     final targetElement = getTargetElement(element, annotation);
     final paramsType = getParamsType(annotation);
+    final utilities = getUtilities(annotation);
     final cases = _getUnionCases(annotation);
 
-    return ClassTypeCasesUnionDeclaration(targetElement, paramsType, cases);
+    return ClassTypeCasesUnionDeclaration(targetElement, paramsType, utilities, cases);
   }
 
   Set<TypeCaseDeclaration> _getUnionCases(ConstantReader annotation) => annotation

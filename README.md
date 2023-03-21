@@ -163,6 +163,22 @@ There are configuration options that can be defined on any of the union types:
   );
   ```
 
+- **utilities** - defines which utilities should be generated for the annotated union (defaults to `UnionUtilities.all`):
+  ```Dart
+  @Union.of(
+    {
+      Cat,
+      Dog,
+    },
+    utilities: UnionUtilities.only(
+      map: true,
+      asType: true,
+    ),
+  )
+  abstract class Animal {}
+  ```
+  The annotation will generate only a `map` method and `as*Type*` getters. 
+
 ## Annotating external types
 
 If the union annotation cannot be put on the union type directly, e.g. when the types are declared in different packages, create an extension on the type and annotate the extension instead:

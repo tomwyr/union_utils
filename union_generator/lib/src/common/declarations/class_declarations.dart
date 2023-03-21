@@ -7,6 +7,7 @@ class ClassTypesUnionDeclaration extends UnionDeclaration<ClassElement> {
   const ClassTypesUnionDeclaration(
     super.target,
     super.paramsType,
+    super.utilities,
     this.types,
   );
 
@@ -17,6 +18,7 @@ class ClassTypeCasesUnionDeclaration extends UnionDeclaration<ClassElement> {
   const ClassTypeCasesUnionDeclaration(
     super.target,
     super.paramsType,
+    super.utilities,
     this.cases,
   );
 

@@ -46,6 +46,22 @@ mixin UnionParserMixin<T extends Element> {
     final index = annotation.read('paramsType').objectValue.getField('index')!.toIntValue()!;
     return UnionParamsType.values[index];
   }
+
+  UnionUtilities getUtilities(ConstantReader annotation) {
+    final utilitiesReader = annotation.read('utilities').objectValue;
+
+    final map = utilitiesReader.getField('map')!.toBoolValue()!;
+    final maybeMap = utilitiesReader.getField('maybeMap')!.toBoolValue()!;
+    final asType = utilitiesReader.getField('asType')!.toBoolValue()!;
+    final asTypeOrNull = utilitiesReader.getField('asTypeOrNull')!.toBoolValue()!;
+
+    return UnionUtilities(
+      map: map,
+      maybeMap: maybeMap,
+      asType: asType,
+      asTypeOrNull: asTypeOrNull,
+    );
+  }
 }
 
 mixin ClassUnionParserMixin<T extends UnionDeclaration> {

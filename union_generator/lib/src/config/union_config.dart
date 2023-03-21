@@ -4,7 +4,6 @@ import '../common/declarations/union_declaration.dart';
 import 'factories/union_config_factory.dart';
 import 'union_case_config.dart';
 import 'union_type.dart';
-import 'union_utilities.dart';
 
 class UnionConfig {
   UnionConfig({

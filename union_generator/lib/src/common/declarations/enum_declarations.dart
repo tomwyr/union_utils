@@ -7,6 +7,7 @@ class EnumUnionDeclaration extends UnionDeclaration<EnumElement> {
   const EnumUnionDeclaration(
     super.target,
     super.paramsType,
+    super.utilities,
     this.values,
   );
 
@@ -17,6 +18,7 @@ class EnumCasesUnionDeclaration extends UnionDeclaration<EnumElement> {
   const EnumCasesUnionDeclaration(
     super.target,
     super.paramsType,
+    super.utilities,
     this.cases,
   );
 
