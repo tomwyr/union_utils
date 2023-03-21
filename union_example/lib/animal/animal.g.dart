@@ -7,6 +7,20 @@ part of 'animal.dart';
 // **************************************************************************
 
 extension AnimalUnion on Animal {
+  Bird get asBird => this as Bird;
+  Cat get asCat => this as Cat;
+  Dog get asDog => this as Dog;
+  Fish get asFish => this as Fish;
+  Reptile get asReptile => this as Reptile;
+  Horse get asHorse => this as Horse;
+
+  Bird? get asBirdOrNull => this is Bird ? this as Bird : null;
+  Cat? get asCatOrNull => this is Cat ? this as Cat : null;
+  Dog? get asDogOrNull => this is Dog ? this as Dog : null;
+  Fish? get asFishOrNull => this is Fish ? this as Fish : null;
+  Reptile? get asReptileOrNull => this is Reptile ? this as Reptile : null;
+  Horse? get asHorseOrNull => this is Horse ? this as Horse : null;
+
   T map<T>({
     required T Function(Bird bird) bird,
     required T Function(Cat cat) cat,

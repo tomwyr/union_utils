@@ -7,6 +7,13 @@ part of 'bird.dart';
 // **************************************************************************
 
 extension BirdUnion on Bird {
+  Eagle get asEagle => this as Eagle;
+  Flightless get asFlightless => this as Flightless;
+
+  Eagle? get asEagleOrNull => this is Eagle ? this as Eagle : null;
+  Flightless? get asFlightlessOrNull =>
+      this is Flightless ? this as Flightless : null;
+
   T map<T>({
     required T Function(Eagle eagle) eagle,
     required T Function(Flightless flightless) flightless,

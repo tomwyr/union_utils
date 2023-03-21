@@ -40,7 +40,7 @@ class EnumMapTemplate extends Template {
   }
 
   String getMapParam(UnionCaseConfig caseConfig) {
-    final paramName = caseConfig.paramName;
+    final paramName = caseConfig.paramName.decapitalized;
 
     switch (config.paramsType) {
       case UnionParamsType.named:
@@ -57,7 +57,7 @@ class EnumMapTemplate extends Template {
 
   String getMapCall(UnionCaseConfig caseConfig) {
     final caseValue = caseConfig.caseValue;
-    final paramName = caseConfig.paramName;
+    final paramName = caseConfig.paramName.decapitalized;
 
     return '''
     if (this == $caseValue) {
@@ -84,7 +84,7 @@ class EnumMaybeMapTemplate extends Template {
   }
 
   String getMapperParam(UnionCaseConfig caseConfig) {
-    final paramName = caseConfig.paramName;
+    final paramName = caseConfig.paramName.decapitalized;
 
     return '''
     T Function()? $paramName,
@@ -107,7 +107,7 @@ class EnumMaybeMapTemplate extends Template {
 
   String getMapCall(UnionCaseConfig caseConfig) {
     final caseValue = caseConfig.caseValue;
-    final paramName = caseConfig.paramName;
+    final paramName = caseConfig.paramName.decapitalized;
 
     return '''
     if (this == $caseValue) {

@@ -7,6 +7,16 @@ part of 'dog_union.dart';
 // **************************************************************************
 
 extension DogUnion on Dog {
+  Beagle get asBeagle => this as Beagle;
+  GoldenRetriever get asGoldenRetriever => this as GoldenRetriever;
+  BorderCollie get asBorderCollie => this as BorderCollie;
+
+  Beagle? get asBeagleOrNull => this is Beagle ? this as Beagle : null;
+  GoldenRetriever? get asGoldenRetrieverOrNull =>
+      this is GoldenRetriever ? this as GoldenRetriever : null;
+  BorderCollie? get asBorderCollieOrNull =>
+      this is BorderCollie ? this as BorderCollie : null;
+
   T map<T>({
     required T Function(Beagle beagle) beagle,
     required T Function(GoldenRetriever goldenRetriever) goldenRetriever,

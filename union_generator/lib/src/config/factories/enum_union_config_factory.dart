@@ -14,10 +14,11 @@ class EnumUnionConfigFactory {
     final unionCases = declaration.values.map((value) {
       final fieldName = value.variable!.name;
       final caseValue = '$typeName.$fieldName';
+      final paramName = UnionParamName(fieldName);
 
       return UnionCaseConfig(
         caseValue: caseValue,
-        paramName: fieldName,
+        paramName: paramName,
       );
     });
 
@@ -43,7 +44,7 @@ class EnumUnionConfigFactory {
 
       final fieldName = enumField.name;
       final caseValue = '$typeName.$fieldName';
-      final paramName = caseDeclaration.name ?? enumField.name;
+      final paramName = UnionParamName(caseDeclaration.name ?? enumField.name);
 
       return UnionCaseConfig(
         caseValue: caseValue,

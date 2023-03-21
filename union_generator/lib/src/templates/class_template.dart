@@ -12,6 +12,8 @@ class ClassUnionTemplate extends Template {
   @override
   String generate() {
     final utilities = <Template>[
+      if (config.generateAsType) ClassAsTypeTemplate(config),
+      if (config.generateAsTypeOrNull) ClassAsTypeOrNullTemplate(config),
       if (config.generateMap) ClassMapTemplate(config),
       if (config.generateMaybeMap) ClassMaybeMapTemplate(config),
     ].map((template) => template.generate());
@@ -41,7 +43,7 @@ class ClassMapTemplate extends Template {
 
   String getMapParam(UnionCaseConfig caseConfig) {
     final caseValue = caseConfig.caseValue;
-    final paramName = caseConfig.paramName;
+    final paramName = caseConfig.paramName.decapitalized;
 
     switch (config.paramsType) {
       case UnionParamsType.named:
@@ -58,7 +60,7 @@ class ClassMapTemplate extends Template {
 
   String getMapCall(UnionCaseConfig caseConfig) {
     final caseValue = caseConfig.caseValue;
-    final paramName = caseConfig.paramName;
+    final paramName = caseConfig.paramName.decapitalized;
 
     return '''
     if (this is $caseValue) {
@@ -86,7 +88,7 @@ class ClassMaybeMapTemplate extends Template {
 
   String getMapParam(UnionCaseConfig caseConfig) {
     final caseValue = caseConfig.caseValue;
-    final paramName = caseConfig.paramName;
+    final paramName = caseConfig.paramName.decapitalized;
 
     return '''
     T Function($caseValue $paramName)? $paramName,
@@ -109,12 +111,53 @@ class ClassMaybeMapTemplate extends Template {
 
   String getMapCall(UnionCaseConfig caseConfig) {
     final caseValue = caseConfig.caseValue;
-    final paramName = caseConfig.paramName;
+    final paramName = caseConfig.paramName.decapitalized;
 
     return '''
     if (this is $caseValue) {
       return $paramName != null ? $paramName(this as $caseValue) : orElse();
     }
 ''';
+  }
+}
+
+class ClassAsTypeTemplate extends Template {
+  ClassAsTypeTemplate(this.config);
+
+  final UnionConfig config;
+
+  @override
+  String generate() {
+    final asTypeCalls = config.unionCases.map(getAsTypeCall).join('\n');
+
+    return '$asTypeCalls\n';
+  }
+
+  String getAsTypeCall(UnionCaseConfig caseConfig) {
+    final type = caseConfig.caseValue;
+    final paramName = caseConfig.paramName.capitalized;
+
+    return '$type get as$paramName => this as $type;';
+  }
+}
+
+class ClassAsTypeOrNullTemplate extends Template {
+  ClassAsTypeOrNullTemplate(this.config);
+
+  final UnionConfig config;
+
+  @override
+  String generate() {
+    final asTypeOrNullCalls = config.unionCases.map(getAsTypeOrNullCall).join('\n');
+
+    return '$asTypeOrNullCalls\n';
+  }
+
+  String getAsTypeOrNullCall(UnionCaseConfig caseConfig) {
+    final type = caseConfig.caseValue;
+    final nullableType = type.endsWith('?') ? type : '$type?';
+    final paramName = caseConfig.paramName.capitalized;
+
+    return '$nullableType get as${paramName}OrNull => this is $type ? this as $type : null;';
   }
 }

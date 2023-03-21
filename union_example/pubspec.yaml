@@ -6,15 +6,9 @@ environment:
 
 dependencies:
   union:
-    git:
-      url: https://github.com/tomwyr/union_utils.git
-      path: union
-      ref: v2.1.0
+    path: ../union
 
 dev_dependencies:
   build_runner: ^2.3.3
   union_generator:
-    git:
-      url: https://github.com/tomwyr/union_utils.git
-      path: union_generator
-      ref: v2.1.0
+    path: ../union_generator

@@ -12,7 +12,7 @@ class ClassUnionConfigFactory {
   ) {
     final unionCases = declaration.types.map((type) {
       final typeName = type.element!.displayName;
-      final paramName = typeName.decapitalize();
+      final paramName = UnionParamName(typeName);
 
       return UnionCaseConfig(
         caseValue: typeName,
@@ -36,7 +36,7 @@ class ClassUnionConfigFactory {
   ) {
     final unionCases = declaration.cases.map((caseDeclaration) {
       final typeName = caseDeclaration.type.element!.displayName;
-      final paramName = (caseDeclaration.name ?? typeName).decapitalize();
+      final paramName = UnionParamName(caseDeclaration.name ?? typeName);
 
       return UnionCaseConfig(
         caseValue: typeName,
@@ -51,12 +51,5 @@ class ClassUnionConfigFactory {
       utilities: utilities,
       paramsType: declaration.paramsType,
     );
-  }
-}
-
-extension on String {
-  String decapitalize() {
-    if (isEmpty) return '';
-    return this[0].toLowerCase() + substring(1);
   }
 }

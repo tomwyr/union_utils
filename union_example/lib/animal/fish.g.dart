@@ -7,6 +7,14 @@ part of 'fish.dart';
 // **************************************************************************
 
 extension FishUnion on Fish {
+  Shark get asJaws => this as Shark;
+  Goldfish get asNemo => this as Goldfish;
+  Piranha get asPiranha => this as Piranha;
+
+  Shark? get asJawsOrNull => this is Shark ? this as Shark : null;
+  Goldfish? get asNemoOrNull => this is Goldfish ? this as Goldfish : null;
+  Piranha? get asPiranhaOrNull => this is Piranha ? this as Piranha : null;
+
   T map<T>({
     required T Function(Shark jaws) jaws,
     required T Function(Goldfish nemo) nemo,
