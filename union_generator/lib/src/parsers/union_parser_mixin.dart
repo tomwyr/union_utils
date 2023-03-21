@@ -51,12 +51,14 @@ mixin UnionParserMixin<T extends Element> {
     final utilitiesReader = annotation.read('utilities').objectValue;
 
     final map = utilitiesReader.getField('map')!.toBoolValue()!;
+    final mapOrNull = utilitiesReader.getField('mapOrNull')!.toBoolValue()!;
     final maybeMap = utilitiesReader.getField('maybeMap')!.toBoolValue()!;
     final asType = utilitiesReader.getField('asType')!.toBoolValue()!;
     final asTypeOrNull = utilitiesReader.getField('asTypeOrNull')!.toBoolValue()!;
 
     return UnionUtilities(
       map: map,
+      mapOrNull: mapOrNull,
       maybeMap: maybeMap,
       asType: asType,
       asTypeOrNull: asTypeOrNull,

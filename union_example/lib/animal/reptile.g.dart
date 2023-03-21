@@ -28,6 +28,27 @@ extension ReptileUnion on Reptile {
     );
   }
 
+  T? mapOrNull<T>({
+    T Function()? snake,
+    T Function()? turtle,
+    T Function()? lizard,
+  }) {
+    if (this == Reptile.snake) {
+      return snake?.call();
+    }
+    if (this == Reptile.turtle) {
+      return turtle?.call();
+    }
+    if (this == Reptile.lizard) {
+      return lizard?.call();
+    }
+
+    throw UnknownUnionCaseError(
+      unionName: 'Reptile',
+      unionCase: this,
+    );
+  }
+
   T maybeMap<T>({
     T Function()? snake,
     T Function()? turtle,

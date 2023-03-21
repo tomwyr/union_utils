@@ -48,6 +48,36 @@ $unknownCaseError
     }
   }
 
+  String getUnionMapOrNull({
+    required UnionConfig config,
+    required String mapParams,
+    required String mapCalls,
+  }) {
+    final unknownCaseError = _getUnknownCaseError(config);
+
+    switch (config.paramsType) {
+      case UnionParamsType.named:
+        return '''
+  T? mapOrNull<T>({
+$mapParams
+  }) {
+$mapCalls
+$unknownCaseError
+  }
+''';
+
+      case UnionParamsType.positional:
+        return '''
+  T? mapOrNull<T>(
+$mapParams
+  ) {
+$mapCalls
+$unknownCaseError
+  }
+''';
+    }
+  }
+
   String getUnionMaybeMap({
     required UnionConfig config,
     required String mapParams,

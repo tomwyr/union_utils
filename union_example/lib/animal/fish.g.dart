@@ -36,6 +36,27 @@ extension FishUnion on Fish {
     );
   }
 
+  T? mapOrNull<T>({
+    T Function(Shark jaws)? jaws,
+    T Function(Goldfish nemo)? nemo,
+    T Function(Piranha piranha)? piranha,
+  }) {
+    if (this is Shark) {
+      return jaws?.call(this as Shark);
+    }
+    if (this is Goldfish) {
+      return nemo?.call(this as Goldfish);
+    }
+    if (this is Piranha) {
+      return piranha?.call(this as Piranha);
+    }
+
+    throw UnknownUnionCaseError(
+      unionName: 'Fish',
+      unionCase: this,
+    );
+  }
+
   T maybeMap<T>({
     T Function(Shark jaws)? jaws,
     T Function(Goldfish nemo)? nemo,

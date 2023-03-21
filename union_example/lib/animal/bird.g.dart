@@ -31,6 +31,23 @@ extension BirdUnion on Bird {
     );
   }
 
+  T? mapOrNull<T>({
+    T Function(Eagle eagle)? eagle,
+    T Function(Flightless flightless)? flightless,
+  }) {
+    if (this is Eagle) {
+      return eagle?.call(this as Eagle);
+    }
+    if (this is Flightless) {
+      return flightless?.call(this as Flightless);
+    }
+
+    throw UnknownUnionCaseError(
+      unionName: 'Bird',
+      unionCase: this,
+    );
+  }
+
   T maybeMap<T>({
     T Function(Eagle eagle)? eagle,
     T Function(Flightless flightless)? flightless,

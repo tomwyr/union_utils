@@ -38,6 +38,27 @@ extension DogUnion on Dog {
     );
   }
 
+  T? mapOrNull<T>({
+    T Function(Beagle beagle)? beagle,
+    T Function(GoldenRetriever goldenRetriever)? goldenRetriever,
+    T Function(BorderCollie borderCollie)? borderCollie,
+  }) {
+    if (this is Beagle) {
+      return beagle?.call(this as Beagle);
+    }
+    if (this is GoldenRetriever) {
+      return goldenRetriever?.call(this as GoldenRetriever);
+    }
+    if (this is BorderCollie) {
+      return borderCollie?.call(this as BorderCollie);
+    }
+
+    throw UnknownUnionCaseError(
+      unionName: 'Dog',
+      unionCase: this,
+    );
+  }
+
   T maybeMap<T>({
     T Function(Beagle beagle)? beagle,
     T Function(GoldenRetriever goldenRetriever)? goldenRetriever,

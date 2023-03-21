@@ -54,6 +54,39 @@ extension AnimalUnion on Animal {
     );
   }
 
+  T? mapOrNull<T>({
+    T Function(Bird bird)? bird,
+    T Function(Cat cat)? cat,
+    T Function(Dog dog)? dog,
+    T Function(Fish fish)? fish,
+    T Function(Reptile reptile)? reptile,
+    T Function(Horse horse)? horse,
+  }) {
+    if (this is Bird) {
+      return bird?.call(this as Bird);
+    }
+    if (this is Cat) {
+      return cat?.call(this as Cat);
+    }
+    if (this is Dog) {
+      return dog?.call(this as Dog);
+    }
+    if (this is Fish) {
+      return fish?.call(this as Fish);
+    }
+    if (this is Reptile) {
+      return reptile?.call(this as Reptile);
+    }
+    if (this is Horse) {
+      return horse?.call(this as Horse);
+    }
+
+    throw UnknownUnionCaseError(
+      unionName: 'Animal',
+      unionCase: this,
+    );
+  }
+
   T maybeMap<T>({
     T Function(Bird bird)? bird,
     T Function(Cat cat)? cat,

@@ -5,6 +5,7 @@ class UnionUtilities {
   const UnionUtilities({
     required this.map,
     required this.maybeMap,
+    required this.mapOrNull,
     required this.asType,
     required this.asTypeOrNull,
   });
@@ -13,6 +14,7 @@ class UnionUtilities {
   /// the manually disabled ones.
   const UnionUtilities.all({
     this.map = true,
+    this.mapOrNull = true,
     this.maybeMap = true,
     this.asType = true,
     this.asTypeOrNull = true,
@@ -22,6 +24,7 @@ class UnionUtilities {
   /// the manually enabled ones.
   const UnionUtilities.only({
     this.map = false,
+    this.mapOrNull = false,
     this.maybeMap = false,
     this.asType = false,
     this.asTypeOrNull = false,
@@ -29,6 +32,9 @@ class UnionUtilities {
 
   /// Whether to generate a `map` method.
   final bool map;
+
+  /// Whether to generate a `mapOrNull` method.
+  final bool mapOrNull;
 
   /// Whether to generate a `maybeMap` method.
   final bool maybeMap;

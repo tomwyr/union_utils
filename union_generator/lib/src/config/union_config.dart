@@ -24,6 +24,7 @@ class UnionConfig {
   final UnionParamsType paramsType;
 
   bool get generateMap => utilities.map && unionCases.isNotEmpty;
+  bool get generateMapOrNull => utilities.mapOrNull && unionCases.isNotEmpty;
   bool get generateMaybeMap => utilities.maybeMap && unionCases.isNotEmpty;
   bool get generateAsType => utilities.asType && unionCases.isNotEmpty;
   bool get generateAsTypeOrNull => utilities.asTypeOrNull && unionCases.isNotEmpty;

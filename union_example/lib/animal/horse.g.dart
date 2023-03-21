@@ -28,6 +28,27 @@ extension HorseUnion on Horse {
     );
   }
 
+  T? mapOrNull<T>({
+    T Function()? andy,
+    T Function()? shawn,
+    T Function()? bob,
+  }) {
+    if (this == Horse.arabian) {
+      return andy?.call();
+    }
+    if (this == Horse.warmblood) {
+      return shawn?.call();
+    }
+    if (this == Horse.mustang) {
+      return bob?.call();
+    }
+
+    throw UnknownUnionCaseError(
+      unionName: 'Horse',
+      unionCase: this,
+    );
+  }
+
   T maybeMap<T>({
     T Function()? andy,
     T Function()? shawn,

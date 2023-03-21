@@ -15,6 +15,7 @@ class ClassUnionTemplate extends Template {
       if (config.generateAsType) ClassAsTypeTemplate(config),
       if (config.generateAsTypeOrNull) ClassAsTypeOrNullTemplate(config),
       if (config.generateMap) ClassMapTemplate(config),
+      if (config.generateMapOrNull) ClassMapOrNullTemplate(config),
       if (config.generateMaybeMap) ClassMaybeMapTemplate(config),
     ].map((template) => template.generate());
 
@@ -65,6 +66,52 @@ class ClassMapTemplate extends Template {
     return '''
     if (this is $caseValue) {
       return $paramName(this as $caseValue);
+    }
+''';
+  }
+}
+
+class ClassMapOrNullTemplate extends Template {
+  ClassMapOrNullTemplate(this.config);
+
+  final UnionConfig config;
+
+  @override
+  String generate() {
+    final mapParams = config.unionCases.map(getMapParam).join();
+    final mapCalls = config.unionCases.map(getMapCall).join();
+
+    return getUnionMapOrNull(
+      config: config,
+      mapParams: mapParams,
+      mapCalls: mapCalls,
+    );
+  }
+
+  String getMapParam(UnionCaseConfig caseConfig) {
+    final caseValue = caseConfig.caseValue;
+    final paramName = caseConfig.paramName.decapitalized;
+
+    switch (config.paramsType) {
+      case UnionParamsType.named:
+        return '''
+    T Function($caseValue $paramName)? $paramName,
+''';
+
+      case UnionParamsType.positional:
+        return '''
+    T Function($caseValue $paramName)? $paramName,
+''';
+    }
+  }
+
+  String getMapCall(UnionCaseConfig caseConfig) {
+    final caseValue = caseConfig.caseValue;
+    final paramName = caseConfig.paramName.decapitalized;
+
+    return '''
+    if (this is $caseValue) {
+      return $paramName?.call(this as $caseValue);
     }
 ''';
   }
