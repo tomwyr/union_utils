@@ -76,3 +76,22 @@ class NotEnumUnionCaseError extends Error {
   @override
   String toString() => 'The value $value is not a case of the union ${target.displayName}.';
 }
+
+class InvalidBuildConfigError extends Error {
+  InvalidBuildConfigError(this.errorCause);
+
+  final Object errorCause;
+
+  @override
+  String toString() => 'An error occurred while parsing the build.yaml configuration:\n$errorCause';
+}
+
+class UnexpectedBuildConfigError extends Error {
+  UnexpectedBuildConfigError(this.unexpectedConfig);
+
+  final Map<String, dynamic> unexpectedConfig;
+
+  @override
+  String toString() =>
+      'Unexpected values found in the build.yaml configuration:\n$unexpectedConfig';
+}

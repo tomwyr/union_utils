@@ -3,7 +3,7 @@ import 'package:source_gen/source_gen.dart';
 
 import 'generator.dart';
 
-Builder unionBuilder(BuilderOptions options) => SharedPartBuilder(
+Builder unionGenerator(BuilderOptions options) => SharedPartBuilder(
       [UnionGenerator(options)],
       'union',
     );

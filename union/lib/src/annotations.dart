@@ -11,8 +11,8 @@ import 'utilities.dart';
 })
 abstract class Union {
   const Union._({
-    this.paramsType = UnionParamsType.named,
-    this.utilities = const UnionUtilities.all(),
+    this.paramsType,
+    this.utilities,
   });
 
   /// An annotation that marks the targeted class to be a union of [types], for
@@ -53,12 +53,12 @@ abstract class Union {
   /// The type of parameters that should be generated for the union.
   ///
   /// Defaults to [UnionParamsType.named]
-  final UnionParamsType paramsType;
+  final UnionParamsType? paramsType;
 
   /// The utilities that should be generated for the union.
   ///
   /// Defaults to [UnionUtilities.all].
-  final UnionUtilities utilities;
+  final UnionUtilities? utilities;
 }
 
 class ClassTypesUnion extends Union {

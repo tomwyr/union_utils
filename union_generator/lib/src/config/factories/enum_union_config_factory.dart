@@ -1,13 +1,16 @@
+import '../../build_config/build_config.dart';
 import '../../common/declarations/enum_declarations.dart';
 import '../union_case_config.dart';
 import '../union_config.dart';
 import '../union_type.dart';
 
-class EnumUnionConfigFactory {
-  static UnionConfig createEnumConfig(
+class EnumConfigFactory {
+  static UnionConfig create(
     EnumUnionDeclaration declaration,
-    String unionName,
+    UnionBuildConfig buildConfig,
   ) {
+    final unionName = declaration.target.displayName;
+
     final typeName = declaration.target.displayName;
     final unionCases = declaration.values.map((value) {
       final fieldName = value.variable!.name;
@@ -24,15 +27,19 @@ class EnumUnionConfigFactory {
       unionName: unionName,
       unionType: UnionType.enumUnion,
       unionCases: unionCases,
-      utilities: declaration.utilities,
-      paramsType: declaration.paramsType,
+      paramsType: declaration.paramsType ?? buildConfig.paramsType,
+      utilities: declaration.utilities ?? buildConfig.utilities,
     );
   }
+}
 
-  static UnionConfig createEnumCasesConfig(
+class EnumCasesConfigFactory {
+  static UnionConfig create(
     EnumCasesUnionDeclaration declaration,
-    String unionName,
+    UnionBuildConfig buildConfig,
   ) {
+    final unionName = declaration.target.displayName;
+
     final typeName = declaration.target.displayName;
     final unionCases = declaration.cases.map((caseDeclaration) {
       final enumField = declaration.target.fields.firstWhere(
@@ -53,8 +60,8 @@ class EnumUnionConfigFactory {
       unionName: unionName,
       unionType: UnionType.enumUnion,
       unionCases: unionCases,
-      utilities: declaration.utilities,
-      paramsType: declaration.paramsType,
+      paramsType: declaration.paramsType ?? buildConfig.paramsType,
+      utilities: declaration.utilities ?? buildConfig.utilities,
     );
   }
 }

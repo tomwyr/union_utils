@@ -7,11 +7,16 @@ part of 'fish.dart';
 // **************************************************************************
 
 extension FishUnion on Fish {
-  Shark get asJaws => this is Shark ? this as Shark : throw _getInvalidCastError(Shark);
-  Goldfish get asNemo => this is Goldfish ? this as Goldfish : throw _getInvalidCastError(Goldfish);
-  Piranha get asPiranha => this is Piranha ? this as Piranha : throw _getInvalidCastError(Piranha);
+  Shark get asJaws =>
+      this is Shark ? this as Shark : throw _getInvalidCastError(Shark);
+  Goldfish get asNemo => this is Goldfish
+      ? this as Goldfish
+      : throw _getInvalidCastError(Goldfish);
+  Piranha get asPiranha =>
+      this is Piranha ? this as Piranha : throw _getInvalidCastError(Piranha);
 
-  InvalidUnionCastError _getInvalidCastError(Type expectedCase) => InvalidUnionCastError(
+  InvalidUnionCastError _getInvalidCastError(Type expectedCase) =>
+      InvalidUnionCastError(
         unionName: 'Fish',
         expectedCase: expectedCase,
         actualCase: runtimeType,

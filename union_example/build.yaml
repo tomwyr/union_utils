@@ -1,0 +1,14 @@
+# An example build options declaration that can be used to configure available
+# default values used by the generator.
+# targets:
+#   $default:
+#     builders:
+#       union_generator:
+#         options:
+#           params_type: positional
+#           utilities:
+#             map: false
+#             map_or_null: true
+#             maybe_map: false
+#             as_type: true
+#             as_type_or_null: false

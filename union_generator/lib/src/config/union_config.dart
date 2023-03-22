@@ -1,5 +1,6 @@
 import 'package:union/union.dart';
 
+import '../build_config/build_config.dart';
 import '../common/declarations/union_declaration.dart';
 import 'factories/union_config_factory.dart';
 import 'union_case_config.dart';
@@ -14,8 +15,11 @@ class UnionConfig {
     required this.paramsType,
   });
 
-  factory UnionConfig.create(UnionDeclaration declaration) =>
-      UnionConfigFactory.create(declaration);
+  factory UnionConfig.create(
+    UnionDeclaration declaration,
+    UnionBuildConfig buildConfig,
+  ) =>
+      UnionConfigFactory.create(declaration, buildConfig);
 
   final String unionName;
   final UnionType unionType;

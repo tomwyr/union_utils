@@ -1,13 +1,16 @@
+import '../../build_config/build_config.dart';
 import '../../common/declarations/class_declarations.dart';
 import '../union_case_config.dart';
 import '../union_config.dart';
 import '../union_type.dart';
 
-class ClassUnionConfigFactory {
-  static UnionConfig createClassTypesConfig(
+class ClassTypesConfigFactory {
+  static UnionConfig create(
     ClassTypesUnionDeclaration declaration,
-    String unionName,
+    UnionBuildConfig buildConfig,
   ) {
+    final unionName = declaration.target.displayName;
+
     final unionCases = declaration.types.map((type) {
       final typeName = type.element!.displayName;
       final paramName = UnionParamName(typeName);
@@ -22,15 +25,19 @@ class ClassUnionConfigFactory {
       unionName: unionName,
       unionType: UnionType.classUnion,
       unionCases: unionCases,
-      utilities: declaration.utilities,
-      paramsType: declaration.paramsType,
+      paramsType: declaration.paramsType ?? buildConfig.paramsType,
+      utilities: declaration.utilities ?? buildConfig.utilities,
     );
   }
+}
 
-  static UnionConfig createClassTypeCasesConfig(
+class ClassTypeCasesConfigFactory {
+  static UnionConfig create(
     ClassTypeCasesUnionDeclaration declaration,
-    String unionName,
+    UnionBuildConfig buildConfig,
   ) {
+    final unionName = declaration.target.displayName;
+
     final unionCases = declaration.cases.map((caseDeclaration) {
       final typeName = caseDeclaration.type.element!.displayName;
       final paramName = UnionParamName(caseDeclaration.name ?? typeName);
@@ -45,8 +52,8 @@ class ClassUnionConfigFactory {
       unionName: unionName,
       unionType: UnionType.classUnion,
       unionCases: unionCases,
-      utilities: declaration.utilities,
-      paramsType: declaration.paramsType,
+      paramsType: declaration.paramsType ?? buildConfig.paramsType,
+      utilities: declaration.utilities ?? buildConfig.utilities,
     );
   }
 }

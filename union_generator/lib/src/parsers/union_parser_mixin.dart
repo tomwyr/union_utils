@@ -42,19 +42,26 @@ mixin UnionParserMixin<T extends Element> {
     }
   }
 
-  UnionParamsType getParamsType(ConstantReader annotation) {
-    final index = annotation.read('paramsType').objectValue.getField('index')!.toIntValue()!;
+  UnionParamsType? getParamsType(ConstantReader annotation) {
+    final paramsTypeReader = annotation.peek('paramsType');
+    if (paramsTypeReader == null) return null;
+
+    final index = paramsTypeReader.objectValue.getField('index')!.toIntValue()!;
+
     return UnionParamsType.values[index];
   }
 
-  UnionUtilities getUtilities(ConstantReader annotation) {
-    final utilitiesReader = annotation.read('utilities').objectValue;
+  UnionUtilities? getUtilities(ConstantReader annotation) {
+    final utilitiesReader = annotation.peek('utilities');
+    if (utilitiesReader == null) return null;
 
-    final map = utilitiesReader.getField('map')!.toBoolValue()!;
-    final mapOrNull = utilitiesReader.getField('mapOrNull')!.toBoolValue()!;
-    final maybeMap = utilitiesReader.getField('maybeMap')!.toBoolValue()!;
-    final asType = utilitiesReader.getField('asType')!.toBoolValue()!;
-    final asTypeOrNull = utilitiesReader.getField('asTypeOrNull')!.toBoolValue()!;
+    final utilities = utilitiesReader.objectValue;
+
+    final map = utilities.getField('map')!.toBoolValue()!;
+    final mapOrNull = utilities.getField('mapOrNull')!.toBoolValue()!;
+    final maybeMap = utilities.getField('maybeMap')!.toBoolValue()!;
+    final asType = utilities.getField('asType')!.toBoolValue()!;
+    final asTypeOrNull = utilities.getField('asTypeOrNull')!.toBoolValue()!;
 
     return UnionUtilities(
       map: map,

@@ -9,6 +9,6 @@ abstract class UnionDeclaration<T extends Element> {
   );
 
   final T target;
-  final UnionParamsType paramsType;
-  final UnionUtilities utilities;
+  final UnionParamsType? paramsType;
+  final UnionUtilities? utilities;
 }

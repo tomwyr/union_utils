@@ -7,14 +7,19 @@ part of 'animal.dart';
 // **************************************************************************
 
 extension AnimalUnion on Animal {
-  Bird get asBird => this is Bird ? this as Bird : throw _getInvalidCastError(Bird);
+  Bird get asBird =>
+      this is Bird ? this as Bird : throw _getInvalidCastError(Bird);
   Cat get asCat => this is Cat ? this as Cat : throw _getInvalidCastError(Cat);
   Dog get asDog => this is Dog ? this as Dog : throw _getInvalidCastError(Dog);
-  Fish get asFish => this is Fish ? this as Fish : throw _getInvalidCastError(Fish);
-  Reptile get asReptile => this is Reptile ? this as Reptile : throw _getInvalidCastError(Reptile);
-  Horse get asHorse => this is Horse ? this as Horse : throw _getInvalidCastError(Horse);
+  Fish get asFish =>
+      this is Fish ? this as Fish : throw _getInvalidCastError(Fish);
+  Reptile get asReptile =>
+      this is Reptile ? this as Reptile : throw _getInvalidCastError(Reptile);
+  Horse get asHorse =>
+      this is Horse ? this as Horse : throw _getInvalidCastError(Horse);
 
-  InvalidUnionCastError _getInvalidCastError(Type expectedCase) => InvalidUnionCastError(
+  InvalidUnionCastError _getInvalidCastError(Type expectedCase) =>
+      InvalidUnionCastError(
         unionName: 'Animal',
         expectedCase: expectedCase,
         actualCase: runtimeType,

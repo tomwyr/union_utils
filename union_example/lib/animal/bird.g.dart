@@ -7,18 +7,22 @@ part of 'bird.dart';
 // **************************************************************************
 
 extension BirdUnion on Bird {
-  Eagle get asEagle => this is Eagle ? this as Eagle : throw _getInvalidCastError(Eagle);
-  Flightless get asFlightless =>
-      this is Flightless ? this as Flightless : throw _getInvalidCastError(Flightless);
+  Eagle get asEagle =>
+      this is Eagle ? this as Eagle : throw _getInvalidCastError(Eagle);
+  Flightless get asFlightless => this is Flightless
+      ? this as Flightless
+      : throw _getInvalidCastError(Flightless);
 
-  InvalidUnionCastError _getInvalidCastError(Type expectedCase) => InvalidUnionCastError(
+  InvalidUnionCastError _getInvalidCastError(Type expectedCase) =>
+      InvalidUnionCastError(
         unionName: 'Bird',
         expectedCase: expectedCase,
         actualCase: runtimeType,
       );
 
   Eagle? get asEagleOrNull => this is Eagle ? this as Eagle : null;
-  Flightless? get asFlightlessOrNull => this is Flightless ? this as Flightless : null;
+  Flightless? get asFlightlessOrNull =>
+      this is Flightless ? this as Flightless : null;
 
   T map<T>({
     required T Function(Eagle eagle) eagle,
