@@ -12,7 +12,7 @@ dependencies:
     git:
       url: https://github.com/tomwyr/union_utils.git
       path: union
-      ref: v2.2.0
+      ref: v2.3.0
 
 dev_dependencies:
   build_runner:
@@ -20,7 +20,7 @@ dev_dependencies:
     git:
       url: https://github.com/tomwyr/union_utils.git
       path: union_generator
-      ref: v2.2.0
+      ref: v2.3.0
 ```
 
 Get the dependencies:
@@ -214,3 +214,36 @@ A method that casts union object to a specific type. If the actual type is diffe
 ### **as\*Type\*OrNull**
 
 A method similar to [**as\*Type\***](#asType) that returns a `null` value, if the actual union type is different than the requested one.
+
+## Build options
+
+Default values used by the generator can be modified through the `build.yaml` file. The available options which can be configured are listed below:
+
+```Yaml
+options:
+  # Modifies UnionParamsType
+  params_type:
+  # Modifies UnionUtilities
+  utilities:
+    map:
+    map_or_null:
+    maybe_map:
+    as_type:
+    as_type_or_null:
+```
+
+An example `build.yaml` configuration for the package:
+```Yaml
+targets:
+  $default:
+    builders:
+      union_generator:
+        options:
+          params_type: positional
+          utilities:
+            map: false
+            map_or_null: true
+            maybe_map: false
+            as_type: true
+            as_type_or_null: false
+```

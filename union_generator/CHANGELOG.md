@@ -1,3 +1,7 @@
+## 2.3.0
+
+- Support configuring defaults using `build.yaml` options.
+
 ## 2.2.0
 
 - Add _mapOrNull_, _as\*Type\*_ and _as\*Type\*OrNull_ utilities.
