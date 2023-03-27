@@ -13,13 +13,15 @@ void main() {
 }
 
 String describe(Animal animal) {
-  final type = animal is Enum ? (animal as Enum).name.capitalize() : animal.runtimeType;
+  final type =
+      animal is Enum ? (animal as Enum).name.capitalize() : animal.runtimeType;
 
   final info = animal.map(
     cat: (cat) => 'Lives: ${cat.lives}',
     dog: (dog) => dog.map(
       beagle: (beagle) => 'Age: ${beagle.age}',
-      goldenRetriever: (goldenRetriever) => 'Friendly: ${goldenRetriever.friendly}',
+      goldenRetriever: (goldenRetriever) =>
+          'Friendly: ${goldenRetriever.friendly}',
       borderCollie: (borderCollie) => 'Sound: ${borderCollie.sound}',
     ),
     fish: (fish) => fish.map(

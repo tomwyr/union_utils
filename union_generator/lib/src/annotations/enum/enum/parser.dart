@@ -20,7 +20,8 @@ class EnumUnionParser
     return EnumUnionDeclaration(targetElement, paramsType, utilities, values);
   }
 
-  Set<DartObject> _getValues(EnumElement targetElement, ConstantReader annotation) {
+  Set<DartObject> _getValues(
+      EnumElement targetElement, ConstantReader annotation) {
     final valuesReader = annotation.read('values');
 
     if (valuesReader.isNull) {

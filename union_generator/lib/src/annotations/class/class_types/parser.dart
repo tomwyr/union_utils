@@ -7,7 +7,9 @@ import '../../common/parser_mixin.dart';
 import 'declaration.dart';
 
 class ClassTypesUnionParser
-    with UnionParserMixin<ClassElement>, ClassUnionParserMixin<ClassTypesUnionDeclaration>
+    with
+        UnionParserMixin<ClassElement>,
+        ClassUnionParserMixin<ClassTypesUnionDeclaration>
     implements AnnotationParser<ClassTypesUnionDeclaration> {
   @override
   ClassTypesUnionDeclaration parse(Element element, ConstantReader annotation) {
@@ -18,16 +20,19 @@ class ClassTypesUnionParser
     return declaration;
   }
 
-  ClassTypesUnionDeclaration _createDeclaration(Element element, ConstantReader annotation) {
+  ClassTypesUnionDeclaration _createDeclaration(
+      Element element, ConstantReader annotation) {
     final targetElement = getTargetElement(element, annotation);
     final paramsType = getParamsType(annotation);
     final utilities = getUtilities(annotation);
     final types = _getTypes(targetElement, annotation);
 
-    return ClassTypesUnionDeclaration(targetElement, paramsType, utilities, types);
+    return ClassTypesUnionDeclaration(
+        targetElement, paramsType, utilities, types);
   }
 
-  Set<DartType> _getTypes(ClassElement targetElement, ConstantReader annotation) {
+  Set<DartType> _getTypes(
+      ClassElement targetElement, ConstantReader annotation) {
     final typesReader = annotation.read('types');
 
     if (typesReader.isNull) {
@@ -44,6 +49,8 @@ class ClassTypesUnionParser
           .toSet();
     }
 
-    return typesReader.setValue.map((dartObject) => dartObject.toTypeValue()!).toSet();
+    return typesReader.setValue
+        .map((dartObject) => dartObject.toTypeValue()!)
+        .toSet();
   }
 }

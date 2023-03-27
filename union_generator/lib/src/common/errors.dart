@@ -23,7 +23,8 @@ class InvalidAnnotationTargetError extends Error {
   final String targetType;
 
   @override
-  String toString() => 'The union annotation $annotationType cannot be used on $targetType.';
+  String toString() =>
+      'The union annotation $annotationType cannot be used on $targetType.';
 }
 
 class UnknownUnionDeclarationError extends Error {
@@ -34,7 +35,8 @@ class UnknownUnionDeclarationError extends Error {
   final Type declarationType;
 
   @override
-  String toString() => 'The union declaration $declarationType is not supported.';
+  String toString() =>
+      'The union declaration $declarationType is not supported.';
 }
 
 class DuplicatedUnionCaseNameError extends Error {
@@ -47,7 +49,8 @@ class DuplicatedUnionCaseNameError extends Error {
   final String name;
 
   @override
-  String toString() => 'The union ${target.displayName} has a duplicated case: $name.';
+  String toString() =>
+      'The union ${target.displayName} has a duplicated case: $name.';
 }
 
 class NotUnionSubtypeError extends Error {
@@ -74,7 +77,8 @@ class NotEnumUnionCaseError extends Error {
   final DartObject value;
 
   @override
-  String toString() => 'The value $value is not a case of the union ${target.displayName}.';
+  String toString() =>
+      'The value $value is not a case of the union ${target.displayName}.';
 }
 
 class InvalidBuildConfigError extends Error {
@@ -83,7 +87,8 @@ class InvalidBuildConfigError extends Error {
   final Object errorCause;
 
   @override
-  String toString() => 'An error occurred while parsing the build.yaml configuration:\n$errorCause';
+  String toString() =>
+      'An error occurred while parsing the build.yaml configuration:\n$errorCause';
 }
 
 class UnexpectedBuildConfigError extends Error {

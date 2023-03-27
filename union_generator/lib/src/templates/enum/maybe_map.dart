@@ -10,7 +10,9 @@ class EnumMaybeMapTemplate extends Template with UnionTemplateMixin {
   final UnionConfig config;
 
   String generate() {
-    final mapParams = config.unionCases.map(getMapperParam).followedBy([getOrElseParam()]).join();
+    final mapParams = config.unionCases
+        .map(getMapperParam)
+        .followedBy([getOrElseParam()]).join();
     final mapCalls = config.unionCases.map(getMapCall).join();
 
     return getUnionMaybeMap(

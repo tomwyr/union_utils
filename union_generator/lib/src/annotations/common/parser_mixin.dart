@@ -93,7 +93,8 @@ mixin ClassUnionParserMixin<T extends UnionDeclaration> {
 }
 
 mixin EnumUnionParserMixin<T extends UnionDeclaration> {
-  void verifyEnumCasesMatchTarget(EnumElement target, Iterable<DartObject> caseValues) {
+  void verifyEnumCasesMatchTarget(
+      EnumElement target, Iterable<DartObject> caseValues) {
     final targetValues = target.fields
         .whereNot((field) => field.name == 'values')
         .map((field) => field.computeConstantValue()!)

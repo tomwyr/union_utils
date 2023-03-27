@@ -8,15 +8,20 @@ import '../class_types/declaration.dart';
 import 'declaration.dart';
 
 class ClassTypeCasesUnionParser
-    with UnionParserMixin<ClassElement>, ClassUnionParserMixin<ClassTypesUnionDeclaration>
+    with
+        UnionParserMixin<ClassElement>,
+        ClassUnionParserMixin<ClassTypesUnionDeclaration>
     implements AnnotationParser<ClassTypeCasesUnionDeclaration> {
   @override
-  ClassTypeCasesUnionDeclaration parse(Element element, ConstantReader annotation) {
+  ClassTypeCasesUnionDeclaration parse(
+      Element element, ConstantReader annotation) {
     final declaration = _createDeclaration(element, annotation);
 
     verifyUniqueNames(
       element,
-      declaration.cases.map((caseDeclaration) => caseDeclaration.name).whereNotNull(),
+      declaration.cases
+          .map((caseDeclaration) => caseDeclaration.name)
+          .whereNotNull(),
     );
 
     verifyTypesSubtypeTarget(
@@ -27,23 +32,26 @@ class ClassTypeCasesUnionParser
     return declaration;
   }
 
-  ClassTypeCasesUnionDeclaration _createDeclaration(Element element, ConstantReader annotation) {
+  ClassTypeCasesUnionDeclaration _createDeclaration(
+      Element element, ConstantReader annotation) {
     final targetElement = getTargetElement(element, annotation);
     final paramsType = getParamsType(annotation);
     final utilities = getUtilities(annotation);
     final cases = _getUnionCases(annotation);
 
-    return ClassTypeCasesUnionDeclaration(targetElement, paramsType, utilities, cases);
+    return ClassTypeCasesUnionDeclaration(
+        targetElement, paramsType, utilities, cases);
   }
 
-  Set<TypeCaseDeclaration> _getUnionCases(ConstantReader annotation) => annotation
-      .read('cases')
-      .setValue
-      .map(
-        (dartObject) => TypeCaseDeclaration(
-          type: dartObject.getField('type')!.toTypeValue()!,
-          name: dartObject.getField('name')!.toStringValue(),
-        ),
-      )
-      .toSet();
+  Set<TypeCaseDeclaration> _getUnionCases(ConstantReader annotation) =>
+      annotation
+          .read('cases')
+          .setValue
+          .map(
+            (dartObject) => TypeCaseDeclaration(
+              type: dartObject.getField('type')!.toTypeValue()!,
+              name: dartObject.getField('name')!.toStringValue(),
+            ),
+          )
+          .toSet();
 }

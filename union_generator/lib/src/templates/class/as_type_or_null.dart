@@ -8,7 +8,8 @@ class ClassAsTypeOrNullTemplate extends Template {
 
   @override
   String generate() {
-    final asTypeOrNullCalls = config.unionCases.map(getAsTypeOrNullCall).join('\n');
+    final asTypeOrNullCalls =
+        config.unionCases.map(getAsTypeOrNullCall).join('\n');
 
     return '$asTypeOrNullCalls\n';
   }

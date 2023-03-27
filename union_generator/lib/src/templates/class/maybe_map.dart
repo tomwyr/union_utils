@@ -10,7 +10,9 @@ class ClassMaybeMapTemplate extends Template with UnionTemplateMixin {
   final UnionConfig config;
 
   String generate() {
-    final mapParams = config.unionCases.map(getMapParam).followedBy([getOrElseParam()]).join();
+    final mapParams = config.unionCases
+        .map(getMapParam)
+        .followedBy([getOrElseParam()]).join();
     final mapCalls = config.unionCases.map(getMapCall).join();
 
     return getUnionMaybeMap(

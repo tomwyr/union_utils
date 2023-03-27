@@ -7,7 +7,9 @@ import '../../common/parser_mixin.dart';
 import 'declaration.dart';
 
 class EnumCasesUnionParser
-    with UnionParserMixin<EnumElement>, EnumUnionParserMixin<EnumCasesUnionDeclaration>
+    with
+        UnionParserMixin<EnumElement>,
+        EnumUnionParserMixin<EnumCasesUnionDeclaration>
     implements AnnotationParser<EnumCasesUnionDeclaration> {
   @override
   EnumCasesUnionDeclaration parse(Element element, ConstantReader annotation) {
@@ -15,7 +17,9 @@ class EnumCasesUnionParser
 
     verifyUniqueNames(
       element,
-      declaration.cases.map((caseDeclaration) => caseDeclaration.name).whereNotNull(),
+      declaration.cases
+          .map((caseDeclaration) => caseDeclaration.name)
+          .whereNotNull(),
     );
 
     verifyEnumCasesMatchTarget(
@@ -26,16 +30,19 @@ class EnumCasesUnionParser
     return declaration;
   }
 
-  EnumCasesUnionDeclaration _createDeclaration(Element element, ConstantReader annotation) {
+  EnumCasesUnionDeclaration _createDeclaration(
+      Element element, ConstantReader annotation) {
     final targetElement = getTargetElement(element, annotation);
     final paramsType = getParamsType(annotation);
     final utilities = getUtilities(annotation);
     final cases = _getEnumCases(targetElement, annotation);
 
-    return EnumCasesUnionDeclaration(targetElement, paramsType, utilities, cases);
+    return EnumCasesUnionDeclaration(
+        targetElement, paramsType, utilities, cases);
   }
 
-  Set<EnumCaseDeclaration> _getEnumCases(EnumElement targetElement, ConstantReader annotation) {
+  Set<EnumCaseDeclaration> _getEnumCases(
+      EnumElement targetElement, ConstantReader annotation) {
     final valuesReader = annotation.read('cases');
 
     if (valuesReader.isNull) {
