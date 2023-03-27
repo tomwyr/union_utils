@@ -1,4 +1,4 @@
-library union;
+library union_annotation;
 
 export 'src/annotations.dart' show Union;
 export 'src/cases.dart';

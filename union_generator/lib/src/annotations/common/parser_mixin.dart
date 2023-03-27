@@ -3,7 +3,7 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:collection/collection.dart';
 import 'package:source_gen/source_gen.dart';
-import 'package:union/union.dart';
+import 'package:union_annotation/union_annotation.dart';
 
 import '../../common/errors.dart';
 import '../union/declaration.dart';

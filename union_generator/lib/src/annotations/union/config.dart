@@ -1,4 +1,4 @@
-import 'package:union/union.dart';
+import 'package:union_annotation/union_annotation.dart';
 
 import '../../build_config/build_config.dart';
 import 'config_factory.dart';

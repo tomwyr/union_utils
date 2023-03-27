@@ -8,10 +8,10 @@ Add package dependencies to your project:
 
 ```Yaml
 dependencies:
-  union:
+  union_annotation:
     git:
       url: https://github.com/tomwyr/union_utils.git
-      path: union
+      path: union_annotation
       ref: v2.4.0
 
 dev_dependencies:

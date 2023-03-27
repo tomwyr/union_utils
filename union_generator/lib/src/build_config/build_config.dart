@@ -1,5 +1,5 @@
 import 'package:build/build.dart';
-import 'package:union/union.dart';
+import 'package:union_annotation/union_annotation.dart';
 
 import 'build_config_parser.dart';
 

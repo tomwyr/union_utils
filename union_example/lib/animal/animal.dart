@@ -1,4 +1,4 @@
-import 'package:union/union.dart';
+import 'package:union_annotation/union_annotation.dart';
 
 import 'bear.dart';
 import 'bird.dart';

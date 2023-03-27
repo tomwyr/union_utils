@@ -11,8 +11,8 @@ dependencies:
   build: ^2.3.1
   collection: ^1.17.0
   source_gen: ^1.2.7
-  union:
+  union_annotation:
     git:
       url: https://github.com/tomwyr/union_utils.git
-      path: union
+      path: union_annotation
       ref: v2.4.0

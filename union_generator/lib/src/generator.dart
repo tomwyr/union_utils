@@ -1,7 +1,7 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
-import 'package:union/union.dart';
+import 'package:union_annotation/union_annotation.dart';
 
 import 'annotations/union/config.dart';
 import 'annotations/union/parser.dart';
