@@ -1,1 +1,0 @@
-library union_generator;
