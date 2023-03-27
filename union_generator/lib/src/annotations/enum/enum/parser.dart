@@ -15,12 +15,12 @@ class EnumUnionParser
     final targetElement = getTargetElement(element, annotation);
     final paramsType = getParamsType(annotation);
     final utilities = getUtilities(annotation);
-    final values = _getEnumValues(targetElement, annotation);
+    final values = _getValues(targetElement, annotation);
 
     return EnumUnionDeclaration(targetElement, paramsType, utilities, values);
   }
 
-  Set<DartObject> _getEnumValues(EnumElement targetElement, ConstantReader annotation) {
+  Set<DartObject> _getValues(EnumElement targetElement, ConstantReader annotation) {
     final valuesReader = annotation.read('values');
 
     if (valuesReader.isNull) {

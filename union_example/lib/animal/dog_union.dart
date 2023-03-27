@@ -4,9 +4,11 @@ import 'dog.dart';
 
 part 'dog_union.g.dart';
 
-@Union.of({
-  Beagle,
-  GoldenRetriever,
-  BorderCollie,
-})
+@Union.of(
+  types: {
+    Beagle,
+    GoldenRetriever,
+    BorderCollie,
+  },
+)
 extension on Dog {}

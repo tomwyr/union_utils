@@ -18,8 +18,8 @@ abstract class Union {
   /// An annotation that marks the targeted class to be a union of [types], for
   /// which the generator should produce utilities. All provided [types] must
   /// be subtypes of the union type.
-  const factory Union.of(
-    Set<Type> types, {
+  const factory Union.of({
+    Set<Type>? types,
     UnionParamsType paramsType,
     UnionUtilities utilities,
   }) = ClassTypesUnion;
@@ -45,7 +45,7 @@ abstract class Union {
   /// An annotation that marks the targeted enum to be a union of its cases,
   /// for which the generator should produce utilities.
   const factory Union.ofEnumCases(
-    Set<EnumCase> casaes, {
+    Set<EnumCase> cases, {
     UnionParamsType paramsType,
     UnionUtilities utilities,
   }) = EnumCasesUnion;
@@ -62,13 +62,13 @@ abstract class Union {
 }
 
 class ClassTypesUnion extends Union {
-  const ClassTypesUnion(
-    this.types, {
+  const ClassTypesUnion({
+    this.types,
     super.paramsType,
     super.utilities,
   }) : super._();
 
-  final Set<Type> types;
+  final Set<Type>? types;
 }
 
 class ClassTypeCasesUnion extends Union {

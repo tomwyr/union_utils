@@ -1,5 +1,6 @@
 import 'package:union/union.dart';
 
+import 'bear.dart';
 import 'bird.dart';
 import 'cat.dart';
 import 'dog.dart';
@@ -9,12 +10,15 @@ import 'reptile.dart';
 
 part 'animal.g.dart';
 
-@Union.of({
-  Bird,
-  Cat,
-  Dog,
-  Fish,
-  Reptile,
-  Horse,
-})
+@Union.of(
+  types: {
+    Bird,
+    Cat,
+    Dog,
+    Fish,
+    Reptile,
+    Horse,
+    Bear,
+  },
+)
 abstract class Animal {}

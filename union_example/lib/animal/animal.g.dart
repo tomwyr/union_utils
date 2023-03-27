@@ -17,6 +17,8 @@ extension AnimalUnion on Animal {
       this is Reptile ? this as Reptile : throw _getInvalidCastError(Reptile);
   Horse get asHorse =>
       this is Horse ? this as Horse : throw _getInvalidCastError(Horse);
+  Bear get asBear =>
+      this is Bear ? this as Bear : throw _getInvalidCastError(Bear);
 
   InvalidUnionCastError _getInvalidCastError(Type expectedCase) =>
       InvalidUnionCastError(
@@ -31,6 +33,7 @@ extension AnimalUnion on Animal {
   Fish? get asFishOrNull => this is Fish ? this as Fish : null;
   Reptile? get asReptileOrNull => this is Reptile ? this as Reptile : null;
   Horse? get asHorseOrNull => this is Horse ? this as Horse : null;
+  Bear? get asBearOrNull => this is Bear ? this as Bear : null;
 
   T map<T>({
     required T Function(Bird bird) bird,
@@ -39,6 +42,7 @@ extension AnimalUnion on Animal {
     required T Function(Fish fish) fish,
     required T Function(Reptile reptile) reptile,
     required T Function(Horse horse) horse,
+    required T Function(Bear bear) bear,
   }) {
     if (this is Bird) {
       return bird(this as Bird);
@@ -58,6 +62,9 @@ extension AnimalUnion on Animal {
     if (this is Horse) {
       return horse(this as Horse);
     }
+    if (this is Bear) {
+      return bear(this as Bear);
+    }
 
     throw UnknownUnionCaseError(
       unionName: 'Animal',
@@ -72,6 +79,7 @@ extension AnimalUnion on Animal {
     T Function(Fish fish)? fish,
     T Function(Reptile reptile)? reptile,
     T Function(Horse horse)? horse,
+    T Function(Bear bear)? bear,
   }) {
     if (this is Bird) {
       return bird?.call(this as Bird);
@@ -91,6 +99,9 @@ extension AnimalUnion on Animal {
     if (this is Horse) {
       return horse?.call(this as Horse);
     }
+    if (this is Bear) {
+      return bear?.call(this as Bear);
+    }
 
     throw UnknownUnionCaseError(
       unionName: 'Animal',
@@ -105,6 +116,7 @@ extension AnimalUnion on Animal {
     T Function(Fish fish)? fish,
     T Function(Reptile reptile)? reptile,
     T Function(Horse horse)? horse,
+    T Function(Bear bear)? bear,
     required T Function() orElse,
   }) {
     if (this is Bird) {
@@ -124,6 +136,9 @@ extension AnimalUnion on Animal {
     }
     if (this is Horse) {
       return horse != null ? horse(this as Horse) : orElse();
+    }
+    if (this is Bear) {
+      return bear != null ? bear(this as Bear) : orElse();
     }
 
     throw UnknownUnionCaseError(

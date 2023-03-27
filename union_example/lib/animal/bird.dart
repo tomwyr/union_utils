@@ -5,10 +5,12 @@ import 'flightless.dart';
 
 part 'bird.g.dart';
 
-@Union.of({
-  Eagle,
-  Flightless,
-})
+@Union.of(
+  types: {
+    Eagle,
+    Flightless,
+  },
+)
 abstract class Bird implements Animal {}
 
 class Eagle extends Bird {
