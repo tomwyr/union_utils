@@ -9,7 +9,7 @@ import 'animal/horse.dart';
 import 'animal/reptile.dart';
 
 void main() {
-  describe(Cat());
+  print(describe(Cat()));
 }
 
 String describe(Animal animal) {
