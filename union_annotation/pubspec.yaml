@@ -1,7 +1,7 @@
 name: union_annotation
 description: Annotations and public types for union_utils, a library allowing to generate utilities for union types.
 repository: https://github.com/tomwyr/union_utils
-version: 2.5.1
+version: 2.5.2
 
 environment:
   sdk: ">=2.19.0 <3.0.0"

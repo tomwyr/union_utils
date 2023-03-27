@@ -1,3 +1,7 @@
+## 2.5.2
+
+- Hide union_generator sources from pub.
+
 ## 2.5.1
 
 - Fix pub related issues.

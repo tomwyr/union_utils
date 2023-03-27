@@ -7,3 +7,5 @@ packages:
 scripts:
   pub:get:
     exec: dart pub get
+  format:
+    exec: dart format .

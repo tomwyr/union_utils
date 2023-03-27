@@ -1,6 +1,6 @@
 name: union_utils
 description: Utils code generation for union types.
-version: 2.5.1
+version: 2.5.2
 publish_to: none
 
 environment:
