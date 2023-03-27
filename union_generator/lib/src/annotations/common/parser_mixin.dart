@@ -78,8 +78,9 @@ mixin ClassUnionParserMixin<T extends UnionDeclaration> {
     final targetElement = target.thisType.element;
 
     for (final type in types) {
-      final Iterable<InterfaceElement> supertypes =
-          type is InterfaceType ? type.allSupertypes.map((supertype) => supertype.element) : [];
+      final supertypes = type is InterfaceType
+          ? type.allSupertypes.map((supertype) => supertype.element)
+          : <InterfaceElement>[];
 
       if (!supertypes.contains(targetElement)) {
         throw NotUnionSubtypeError(
