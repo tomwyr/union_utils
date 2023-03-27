@@ -5,8 +5,8 @@ import 'package:collection/collection.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:union/union.dart';
 
-import '../common/declarations/union_declaration.dart';
-import '../common/errors.dart';
+import '../../common/errors.dart';
+import '../union/declaration.dart';
 
 mixin UnionParserMixin<T extends Element> {
   T getTargetElement(Element element, ConstantReader annotation) {

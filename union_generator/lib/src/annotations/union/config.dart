@@ -1,10 +1,8 @@
 import 'package:union/union.dart';
 
-import '../build_config/build_config.dart';
-import '../common/declarations/union_declaration.dart';
-import 'factories/union_config_factory.dart';
-import 'union_case_config.dart';
-import 'union_type.dart';
+import '../../build_config/build_config.dart';
+import 'config_factory.dart';
+import 'declaration.dart';
 
 class UnionConfig {
   UnionConfig({
@@ -32,4 +30,40 @@ class UnionConfig {
   bool get generateMaybeMap => utilities.maybeMap && unionCases.isNotEmpty;
   bool get generateAsType => utilities.asType && unionCases.isNotEmpty;
   bool get generateAsTypeOrNull => utilities.asTypeOrNull && unionCases.isNotEmpty;
+}
+
+enum UnionType {
+  classUnion,
+  enumUnion,
+}
+
+class UnionCaseConfig {
+  UnionCaseConfig({
+    required this.caseValue,
+    required this.paramName,
+  });
+
+  final String caseValue;
+  final UnionParamName paramName;
+}
+
+class UnionParamName {
+  UnionParamName(String value)
+      : capitalized = value.capitalize(),
+        decapitalized = value.decapitalize();
+
+  final String capitalized;
+  final String decapitalized;
+}
+
+extension on String {
+  String capitalize() {
+    if (isEmpty) return '';
+    return this[0].toUpperCase() + substring(1);
+  }
+
+  String decapitalize() {
+    if (isEmpty) return '';
+    return this[0].toLowerCase() + substring(1);
+  }
 }

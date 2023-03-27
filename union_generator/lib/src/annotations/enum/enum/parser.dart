@@ -3,9 +3,9 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:collection/collection.dart';
 import 'package:source_gen/source_gen.dart';
 
-import '../common/declarations/enum_declarations.dart';
-import 'annotation_parser.dart';
-import 'union_parser_mixin.dart';
+import '../../common/annotation_parser.dart';
+import '../../common/parser_mixin.dart';
+import 'declaration.dart';
 
 class EnumUnionParser
     with UnionParserMixin<EnumElement>

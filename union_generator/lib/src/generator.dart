@@ -3,10 +3,10 @@ import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:union/union.dart';
 
+import 'annotations/union/config.dart';
+import 'annotations/union/parser.dart';
 import 'build_config/build_config.dart';
-import 'config/union_config.dart';
-import 'parsers/union_parser.dart';
-import 'templates/union_template.dart';
+import 'templates/union.dart';
 
 class UnionGenerator extends GeneratorForAnnotation<Union> {
   UnionGenerator(this.options);

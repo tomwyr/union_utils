@@ -1,8 +1,8 @@
 import 'package:union/union.dart';
 
-import '../config/union_config.dart';
+import '../../annotations/union/config.dart';
 
-mixin TemplateUtils {
+mixin UnionTemplateMixin {
   String getUnionExtension({
     required Iterable<String> utilities,
     required UnionConfig config,

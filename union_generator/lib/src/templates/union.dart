@@ -1,8 +1,7 @@
-import '../config/union_config.dart';
-import '../config/union_type.dart';
-import 'class_template.dart';
-import 'enum_template.dart';
-import 'template.dart';
+import '../annotations/union/config.dart';
+import 'class/union.dart';
+import 'common/template.dart';
+import 'enum/union.dart';
 
 class UnionTemplate extends Template {
   UnionTemplate(this.config);

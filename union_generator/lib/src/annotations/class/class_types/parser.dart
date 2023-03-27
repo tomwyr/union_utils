@@ -1,9 +1,9 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:source_gen/source_gen.dart';
 
-import '../common/declarations/class_declarations.dart';
-import 'annotation_parser.dart';
-import 'union_parser_mixin.dart';
+import '../../common/annotation_parser.dart';
+import '../../common/parser_mixin.dart';
+import 'declaration.dart';
 
 class ClassTypesUnionParser
     with UnionParserMixin<ClassElement>, ClassUnionParserMixin<ClassTypesUnionDeclaration>

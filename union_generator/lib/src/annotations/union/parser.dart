@@ -1,13 +1,13 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:source_gen/source_gen.dart';
 
-import '../common/declarations/union_declaration.dart';
-import '../common/errors.dart';
-import 'annotation_parser.dart';
-import 'class_type_cases_union_parser.dart';
-import 'class_types_union_parser.dart';
-import 'enum_union_cases_parser.dart';
-import 'enum_union_parser.dart';
+import '../../common/errors.dart';
+import '../class/class_type_cases/parser.dart';
+import '../class/class_types/parser.dart';
+import '../common/annotation_parser.dart';
+import '../enum/enum/parser.dart';
+import '../enum/enum_cases/parser.dart';
+import 'declaration.dart';
 
 class UnionParser implements AnnotationParser<UnionDeclaration> {
   UnionDeclaration parse(Element element, ConstantReader annotation) {
