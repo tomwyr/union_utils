@@ -1,10 +1,10 @@
 name: union_annotation
-description: Annotations and public types for the union_utils package.
-version: 2.4.0
-publish_to: none
+description: Annotations and public types for union_utils, a library allowing to generate utilities for union types.
+repository: https://github.com/tomwyr/union_utils
+version: 2.5.0
 
 environment:
-  sdk: '>=2.19.2 <3.0.0'
+  sdk: ">=2.19.0 <3.0.0"
 
 dependencies:
-  meta: ^1.8.0
+  meta: ^1.9.1

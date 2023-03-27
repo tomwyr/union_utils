@@ -1,10 +1,10 @@
 name: union_utils
 description: Utils code generation for union types.
-version: 2.4.0
+version: 2.5.0
 publish_to: none
 
 environment:
-  sdk: '>=2.19.2 <3.0.0'
+  sdk: ">=2.19.0 <3.0.0"
 
 dev_dependencies:
   lints: ^2.0.1

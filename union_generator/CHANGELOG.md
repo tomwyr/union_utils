@@ -1,3 +1,7 @@
+## 2.5.0
+
+- Prepare for pub release.
+
 ## 2.4.0
 
 - Support inferring union types.

@@ -8,19 +8,11 @@ Add package dependencies to your project:
 
 ```Yaml
 dependencies:
-  union_annotation:
-    git:
-      url: https://github.com/tomwyr/union_utils.git
-      path: union_annotation
-      ref: v2.4.0
+  union_annotation: ^2.5.0
 
 dev_dependencies:
   build_runner:
-  union_generator:
-    git:
-      url: https://github.com/tomwyr/union_utils.git
-      path: union_generator
-      ref: v2.4.0
+  union_generator: ^2.5.0
 ```
 
 Get the dependencies:

@@ -1,18 +1,14 @@
 name: union_generator
-description: Code generator for the union_utils package.
-version: 2.4.0
-publish_to: none
+description: Code generator for the union_utils, a library allowing to generate utilities for union types.
+repository: https://github.com/tomwyr/union_utils
+version: 2.5.0
 
 environment:
-  sdk: '>=2.19.2 <3.0.0'
+  sdk: ">=2.19.0 <3.0.0"
 
 dependencies:
-  analyzer: ^5.6.0
+  analyzer: ^5.10.0
   build: ^2.3.1
-  collection: ^1.17.0
+  collection: ^1.17.1
   source_gen: ^1.2.7
-  union_annotation:
-    git:
-      url: https://github.com/tomwyr/union_utils.git
-      path: union_annotation
-      ref: v2.4.0
+  union_annotation: ^2.5.0
