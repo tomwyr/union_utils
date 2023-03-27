@@ -1,3 +1,7 @@
+## 2.4.0
+
+- Support inferring union types.
+
 ## 2.3.0
 
 - Support configuring defaults using `build.yaml` options.
