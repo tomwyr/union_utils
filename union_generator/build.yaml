@@ -1,6 +1,6 @@
 builders:
   union_generator:
-    import: "package:union_generator/src/builder.dart"
+    import: "package:union_generator/builder.dart"
     builder_factories: ["unionGenerator"]
     build_extensions: {".dart": ["union_generator.g.part"]}
     auto_apply: dependents

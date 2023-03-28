@@ -1,5 +1,6 @@
 /// A configuration for a union case of given class [type].
 class TypeCase {
+  /// Creates a new instance of [TypeCase].
   const TypeCase({
     required this.type,
     this.name,
@@ -15,6 +16,7 @@ class TypeCase {
 
 /// A configuration for a union case of given enum [value].
 class EnumCase {
+  /// Creates a new instance of [EnumCase].
   const EnumCase({
     required this.value,
     this.name,

@@ -2,6 +2,7 @@
 /// an object that is not a valid union subtype.This should never be the case,
 /// if the union was successfully generated before running the program.
 class UnknownUnionCaseError extends Error {
+  /// Creates a new instance of [UnknownUnionCaseError].
   UnknownUnionCaseError({
     required this.unionName,
     required this.unionCase,
@@ -20,6 +21,7 @@ class UnknownUnionCaseError extends Error {
 /// An error which can be thrown in runtime when a generated utility attempts
 /// to cast a union to a type that is not a valid union subtype.
 class InvalidUnionCastError extends Error {
+  /// Creates a new instance of [InvalidUnionCastError].
   InvalidUnionCastError({
     required this.unionName,
     required this.expectedCase,

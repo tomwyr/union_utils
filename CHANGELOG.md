@@ -1,3 +1,7 @@
+## 2.5.3
+
+- Increase pub score.
+
 ## 2.5.2
 
 - Hide union_generator sources from pub.

@@ -9,6 +9,8 @@ import 'utilities.dart';
   TargetKind.enumType,
   TargetKind.extension,
 })
+
+/// An annotation that marks the target to be a union type.
 abstract class Union {
   const Union._({
     this.paramsType,

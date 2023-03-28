@@ -8,11 +8,11 @@ Add package dependencies to your project:
 
 ```Yaml
 dependencies:
-  union_annotation: ^2.5.2
+  union_annotation:
 
 dev_dependencies:
   build_runner:
-  union_generator: ^2.5.2
+  union_generator:
 ```
 
 Get the dependencies:
